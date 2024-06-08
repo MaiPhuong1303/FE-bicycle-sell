@@ -1,18 +1,19 @@
-import {setHeapSnapshotNearHeapLimit} from "node:v8";
-import {useState} from "react";
-import Header from "./layouts/Header";
-import HomePage from "./shop/HomePage";
-import Footer from "./layouts/Footer";
-
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Header from './layouts/Header/Header';
+import HomePage from './shop/HomePage';
+import Footer from './layouts/Footer/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <HomePage />
-      <Footer />
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Header />
+                <HomePage />
+                <Footer />
+            </div>
+        </Router>
+    );
 }
 
 export default App;

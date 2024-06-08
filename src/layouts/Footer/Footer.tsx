@@ -1,6 +1,6 @@
 const Footer = () =>{
     return (
-        <div>Đây là trang footer</div>
+        <div></div>
     )
 };
 export default Footer;
