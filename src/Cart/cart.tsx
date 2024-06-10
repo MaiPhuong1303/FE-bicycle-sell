@@ -17,7 +17,7 @@ function Cart() {
         <div className={cx('text')}>
             <div className={cx('link')}>
                                     <span className={cx('box-icon')}>
-                                        {/* <img src={images.cart} alt="Cart" /> */}
+
                                         <BsCartDash />
                                         <span className={cx('count-holder')}>
                                             <span className={cx('count')}></span>

@@ -66,4 +66,8 @@
   color: var(--orange-color);
 }
 
+.box-icon svg {
+  font-size: 24px;
+}
+
 /*# sourceMappingURL=Login.module.css.map */

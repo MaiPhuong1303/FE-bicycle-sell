@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import images from '../../../images/images';
+import Menu, { MenuItem } from './Menu';
 // import { FaChevronUp } from 'react-icons/fa';
-// import classNames from 'classnames/bind';
 import styles from './Navbar.module.scss';
 // import config from '~/config';
-import Menu, { MenuItem } from './Menu';
-// import images from '~/assets/images';
-
+// import Menu, { MenuItem } from './Menu';
+import classNames from 'classnames/bind';
+import { FaChevronUp } from 'react-icons/fa';
+import config from '../../../config/config';
 const cx = classNames.bind(styles);
 
 function NavBar() {
