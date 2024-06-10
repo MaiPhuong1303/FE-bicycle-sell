@@ -1,9 +1,11 @@
 header {
-    --search-btn-color: var(--orange-color);
     --search-border-radius: 4px;
     --midle-menu-width: 1170px;
-
-    background-color: var(--primary);
-    min-height: 152px;
+    min-height: 100px;
     border-bottom: 1px solid #e7e7e7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000; /* Đảm bảo header nằm trên cùng */
 }

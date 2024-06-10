@@ -1,9 +1,10 @@
 :root {
-  --yellow-color: #d3b27f;
+  --yellow-color: #d7bc92;
+  --background-color: #0a1e3a;
 }
 
 .middle {
-  background-color: var(--middle-header);
+  background-color: #0a1e3a;
 }
 
 .container {
@@ -11,6 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  height: 35px;
+  margin-top: 10px;
 }
 
 .logo {
@@ -20,7 +23,10 @@
   justify-content: center;
 }
 .logo img {
+  width: 100%;
   max-height: 70px;
+  margin-top: 10px;
+  margin-left: -15px;
 }
 
 .search {
@@ -35,16 +41,19 @@
   padding: 0 20px;
 }
 .information .box .title {
-  color: var(--yellow-color);
+  color: #d7bc92;
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 4px;
+  margin-right: 5px;
 }
 .information .box .sub-title {
   text-transform: uppercase;
   font-size: 0.8rem;
   font-weight: 500;
-  opacity: 0.8;
+  opacity: 0.9;
+  color: #dcbc8e;
+  margin-right: 20px;
 }
 .information .box + .box {
   border-left: 1px solid #ededed;
@@ -56,6 +65,7 @@
   justify-content: space-around;
   user-select: none;
   z-index: 10;
+  color: var(--yellow-color);
 }
 
 .js-action-show .dropdown {

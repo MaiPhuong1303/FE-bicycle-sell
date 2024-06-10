@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
-// import classNames from 'classnames/bind';
+import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Submenu, { SubmenuItem } from './Submenu';
-// import { FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight } from 'react-icons/fa';
 
 const cx = classNames.bind(styles);
+// @ts-ignore
 function MenuItem({ title, to, icon, hasSubmenu }) {
     return hasSubmenu ? (
         <>
@@ -35,11 +36,11 @@ function MenuItem({ title, to, icon, hasSubmenu }) {
     );
 }
 
-// MenuItem.propTypes = {
-//     title: PropTypes.string.isRequired,
-//     to: PropTypes.node.isRequired,
-//     icon: PropTypes.node,
-//     hasSubmenu: PropTypes.bool,
-// };
+MenuItem.propTypes = {
+    title: PropTypes.string.isRequired,
+    to: PropTypes.node.isRequired,
+    icon: PropTypes.node,
+    hasSubmenu: PropTypes.bool,
+};
 
 export default MenuItem;
