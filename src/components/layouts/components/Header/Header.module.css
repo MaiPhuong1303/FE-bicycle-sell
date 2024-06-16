@@ -1,0 +1,24 @@
+.header-hidden .middle {
+  display: none;
+}
+.header-hidden .navbar-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(145, 152, 166, 0.25);
+  animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    top: -60px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=Header.module.css.map */

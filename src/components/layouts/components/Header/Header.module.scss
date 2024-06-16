@@ -1,0 +1,35 @@
+//header {
+//    --search-border-radius: 4px;
+//    --midle-menu-width: 1170px;
+//    min-height: 100px;
+//    border-bottom: 1px solid #e7e7e7;
+//    position: fixed;
+//    top: 0;
+//    width: 100%;
+//    text-align: center;
+//    z-index: 1000; /* Đảm bảo header nằm trên cùng */
+//}
+.header-hidden {
+    .middle {
+        display: none;
+    }
+    .navbar-wrapper {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(145, 152, 166, 0.25);
+        animation: slideDown 0.3s ease-in-out;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        top: -60px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}

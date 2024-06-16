@@ -1,0 +1,11 @@
+.container {
+  width: 60%;
+  margin-right: 5%;
+}
+
+.side-bar {
+  position: sticky;
+  top: 85px;
+}
+
+/*# sourceMappingURL=sideBar.module.css.map */
