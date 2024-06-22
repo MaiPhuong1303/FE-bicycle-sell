@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.image {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.image img {
+    max-width: 100%;
+}
+
+.container {
+    display: flex;
+    width: var(--content-pc-width); /* Độ rộng tổng của container */
+    margin-left: 10%;
+}
+
+.content {
+    width: 90%; /* Chiếm 70% tổng chiều rộng */
+}
+
+.sidebar {
+    width: 20%; /* Chiếm 30% tổng chiều rộng */
+}
+
+.sidebar-list {
+    width: 100%;
+}
+.sidebar-list .menu-list {
+    font-size: 1.6rem;
+}
+.sidebar-list .menu-list .item {
+    position: relative;
+    padding: 12px 0;
+    border-bottom: 1px #efefef dotted;
+    list-style-type: none;
+}
+.sidebar-list .menu-list .item a {
+    transition: color 0.3s;
+    text-decoration: none;
+    color: #0a1e3a;
+}
+.sidebar-list .menu-list .item a:hover {
+    color: var(--yellow-color);
+    transition: color 0.3s;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    margin-left: 15%;
+}
+
+/*# sourceMappingURL=About.module.css.map */
