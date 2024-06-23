@@ -43,6 +43,7 @@ function NavBar() {
                     />
                     <MenuItem title="Giới thiệu" to={config.routes.about} />
                     <MenuItem title="Liên hệ" to={config.routes.contact} />
+                    <MenuItem title="Hướng dẫn mua hàng" to={config.routes.instruct} />
                 </Menu>
             </div>
         </div>

@@ -16,12 +16,14 @@
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Home from '../pages/Home';
+import Instruct from'../pages/Instruct';
 
 //public routes
 const publicRoutes = [
     { path: '/', component:  Home},
     { path: '/contact', component: Contact },
     { path: '/about', component: About },
+    {path: '/instruct', component: Instruct},
     // { path: '/news', component: News },
     // { path: '/collection/thoi-trang-the-thao', component: Collection },
     // { path: '/collection/quan-ao-bong-da', component: Collection },
