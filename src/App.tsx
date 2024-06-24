@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultLayout from './components/layouts/DefaultLayout';
 import { publicRoutes } from './routes';
+//import Footer from './components/Footer';
 
 function App() {
     return (

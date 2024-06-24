@@ -5,6 +5,7 @@ const routes = {
     about: '/about',
     contact: '/contact',
     product: '/product',
+    instruct: '/instruct',
 };
 
 export default routes;
