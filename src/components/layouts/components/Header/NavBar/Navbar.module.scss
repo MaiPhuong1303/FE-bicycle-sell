@@ -43,3 +43,8 @@
         transition: all;
     }
 }
+*,
+*::before,
+*::after {
+    box-sizing: content-box; /* Sử dụng content-box thay vì border-box */
+}
