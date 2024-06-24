@@ -7,6 +7,7 @@ import images from '../../../../../images/images';
 import config from "../../../../../config/config";
 
 
+
 const cx = classNames.bind(styles);
 
 function NavBar() {
@@ -44,6 +45,7 @@ function NavBar() {
                     <MenuItem title="Giới thiệu" to={config.routes.about} />
                     <MenuItem title="Liên hệ" to={config.routes.contact} />
                     <MenuItem title="Hướng dẫn mua hàng" to={config.routes.instruct} />
+
                 </Menu>
             </div>
         </div>
