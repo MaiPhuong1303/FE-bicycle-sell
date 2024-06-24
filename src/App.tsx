@@ -1,29 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import DefaultLayout from './components/layouts/DefaultLayout';
-import { publicRoutes } from './routes';
+import {publicRoutes} from './routes';
 
 function App() {
     return (
         <Router>
             <div className="App">
 
-                    <Routes>
-                        {publicRoutes.map((route, index) => {
-                            const Page = route.component;
-                            return (
-                                <Route
-                                    key={index}
-                                    path={route.path}
-                                    element={
-                                        <DefaultLayout>
-                                    <Page />
-                                        </DefaultLayout>
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        const Page = route.component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <DefaultLayout>
+                                        <Page/>
+                                    </DefaultLayout>
                                 }
-                                />
-                            );
-                        })}
-                    </Routes>
+                            />
+                        );
+                    })}
+                </Routes>
 
             </div>
         </Router>

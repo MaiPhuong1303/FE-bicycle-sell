@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header-hidden .middle {
   display: none;
 }
@@ -19,6 +20,11 @@
     top: 0;
     opacity: 1;
   }
+}
+*,
+*::before,
+*::after {
+  box-sizing: unset; /* Sử dụng content-box thay vì border-box */
 }
 
 /*# sourceMappingURL=Header.module.css.map */
