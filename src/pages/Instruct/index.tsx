@@ -1,10 +1,10 @@
 import {readFile} from "node:fs";
 
 import classNames from 'classnames/bind';
-import styles from './Instruct.module.scss';
-import { Link } from 'react-router-dom';
+import styles from './instruct.module.scss';
+import {Link} from 'react-router-dom';
 import aboutImages from '../../images/aboutImages';
-import SideBox from '../../components/SideBox';
+import SideBox from '../../components/layouts/components/SideBox';
 import SideBar from '../../components/layouts/components/SideBar';
 
 const cx = classNames.bind(styles);
@@ -15,7 +15,7 @@ function Instruct() {
 
             <div className={cx('container')}>
                 <SideBar>
-                    <SideBox title="Danh Sách Sản Phẩm" >
+                    <SideBox title="Danh Sách Sản Phẩm">
                         <div className={cx('sidebar-list')}>
                             <ul className={cx('menu-list')}>
                                 <li className={cx('item')}>
@@ -86,16 +86,25 @@ function Instruct() {
                             Bước 2: Đặt mua sản phẩm
 
                         </p>
-                        <p>+ Điền đầy đủ các thông tin mua hàng theo các bước trên website, sau đó chọn hình thức nhận hàng là giao hàng tận nơi hay đến siêu thị lấy hàng, chọn hình thức thanh toán là trả khi nhận hàng hay thanh toán online (bằng thẻ ATM, VISA hay MasterCard) và hoàn tất đặt hàng.</p>
-                        <p>+ Ngoài ra, nếu quý khách đang sở hữu phiếu mua hàng, mã giảm giá... thì hãy nhập trong bước đặt hàng để được giảm giá theo các bước tại hướng dẫn: Cách sử dụng phiếu mua hàng.
+                        <p>+ Điền đầy đủ các thông tin mua hàng theo các bước trên website, sau đó chọn hình thức nhận
+                            hàng là giao hàng tận nơi hay đến siêu thị lấy hàng, chọn hình thức thanh toán là trả khi
+                            nhận hàng hay thanh toán online (bằng thẻ ATM, VISA hay MasterCard) và hoàn tất đặt
+                            hàng.</p>
+                        <p>+ Ngoài ra, nếu quý khách đang sở hữu phiếu mua hàng, mã giảm giá... thì hãy nhập trong bước
+                            đặt hàng để được giảm giá theo các bước tại hướng dẫn: Cách sử dụng phiếu mua hàng.
 
-                            + Sau khi đặt hàng thành công, Thế Giới Di Động sẽ liên hệ quý khách để xác nhận và hoàn tất thủ tục.
+                            + Sau khi đặt hàng thành công, Thế Giới Di Động sẽ liên hệ quý khách để xác nhận và hoàn tất
+                            thủ tục.
 
-                            Ngoài các cách trên, để mua hàng tại Thế Giới Di Động quý khách còn có thể để lại bình luận tại bất kì đâu trên website (có thông tin tên, số điện thoại...), hoặc trực tiếp chat với tư vấn viên của công ty để được tư vấn và đặt mua sản phẩm.</p>
+                            Ngoài các cách trên, để mua hàng tại Thế Giới Di Động quý khách còn có thể để lại bình luận
+                            tại bất kì đâu trên website (có thông tin tên, số điện thoại...), hoặc trực tiếp chat với tư
+                            vấn viên của công ty để được tư vấn và đặt mua sản phẩm.</p>
                         <p>+Lưu ý:</p>
-                          <p>   Chúng tôi chỉ chấp nhận những đơn đặt hàng khi cung cấp đủ thông tin chính xác về địa chỉ, số điện thoại. Sau khi bạn đặt hàng, chúng tôi sẽ liên lạc lại để kiểm tra thông tin và thỏa thuận thêm những điều có liên quan.
+                        <p> Chúng tôi chỉ chấp nhận những đơn đặt hàng khi cung cấp đủ thông tin chính xác về địa chỉ,
+                            số điện thoại. Sau khi bạn đặt hàng, chúng tôi sẽ liên lạc lại để kiểm tra thông tin và thỏa
+                            thuận thêm những điều có liên quan.
 
-                            </p>
+                        </p>
                     </div>
                 </div>
 

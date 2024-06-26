@@ -60,7 +60,7 @@ const productApi = {
 
         delete newParams._page;
 
-        const productList = await axiosInstance.get('/product', {
+        const productList = await axiosInstance.get('/products', {
             params: newParams,
         });
 
