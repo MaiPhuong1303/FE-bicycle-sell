@@ -2,7 +2,7 @@
 .container {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 70px;
 
 }
 
@@ -18,9 +18,13 @@
 .heading {
     font-size: 2.8rem;
     margin: 30px 0;
+    text-align: center;
 }
 .contact-list {
     li {
+        border-radius: 25px;
+        padding: 10px;
+        border: 2px solid #0a1e3a;
         display: flex;
         margin-bottom: 20px;
     }
@@ -54,9 +58,14 @@
 }
 
 .form-input {
+    border-radius: 25px;
+    padding: 10px;
+    border: 2px solid #0a1e3a;
+    height: 600px;
+    text-align: center;
     input {
         font-size: 1.4rem;
-        width: 100%;
+        width: 80%;
         outline: none;
         border: 1px solid #e7e7e7;
         padding: 10px 20px;
@@ -66,7 +75,7 @@
 
     textarea {
         font-size: 1.4rem;
-        width: 100%;
+        width: 80%;
         height: 100px;
         outline: none;
         border: 1px solid #e7e7e7;
@@ -79,6 +88,9 @@
 .caption {
     color: #9e9e9e;
     font-size: 1.4rem;
+    text-align: justify;
+    margin-left: 40px;
+    margin-right: 40px;
     a {
         color: #2962ff;
     }
@@ -87,24 +99,26 @@
 }
 
 .submit-btn {
-    width: 100%;
-    height: 38px;
+    width: 80%;
+    height: 30px;
     margin-top: 20px;
+    margin-left: 60px;
+    text-align: center;
     input {
         cursor: pointer;
         background-color: var(--orange-color);
-        color: #fff;
+        color: #d7bc92;
         font-size: 1.3rem;
 
         &:hover {
-            background-color: rgb(231, 139, 73);
+            background-color: rgb(10, 30, 58);
         }
     }
 }
 
 .anounce {
-    background-color: rgb(177, 232, 244);
-    color: rgb(0, 94, 115);
+    background-color: rgb(10, 30, 58);
+    color: rgb(215, 188, 146);
     border-radius: 4px;
     padding: 8px;
     font-size: 1.4rem;
