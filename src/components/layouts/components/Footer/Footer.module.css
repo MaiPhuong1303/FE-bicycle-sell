@@ -31,12 +31,14 @@
         ul {
             li {
                 margin-bottom: 10px;
+                color: var(--yellow-color);
 
                 a {
-                    color: white;
-                    text-decoration: none;
 
-                    &:hover {
+                    text-decoration: none;
+                    color: var(--yellow-color);
+
+                &:hover {
                         text-decoration: underline;
                     }
                 }

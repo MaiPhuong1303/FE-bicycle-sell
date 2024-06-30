@@ -12,12 +12,10 @@ interface DefaultLayoutProps {
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     return (
         <>
-
             <Header />
             <div className="Container">{children}</div>
             <Footer />
         </>
     );
 };
-
 export default DefaultLayout;

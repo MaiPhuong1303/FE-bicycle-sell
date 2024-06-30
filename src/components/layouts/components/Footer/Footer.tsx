@@ -16,9 +16,9 @@ const Footer = () => {
                 <div className={cx('footer-column')}>
                     <h4>Liên hệ</h4>
                     <ul>
-                        <li>Email: info@company.com</li>
-                        <li>Điện thoại: -------</li>
-                        <li>Địa chỉ:---------M</li>
+                        <li>Email: cchanh375@gamil.com</li>
+                        <li>Điện thoại: 0337576851</li>
+                        <li>Địa chỉ:Khu Phố 6, Phường Linh Trung, Thành Phố Thủ Đức, Thành Phố Hồ Chí Minh</li>
                     </ul>
                 </div>
                 <div className={cx('footer-column')}>
@@ -31,9 +31,7 @@ const Footer = () => {
                 </div>
                 <div className={cx('cleat')}></div>
             </div>
-            <div className={cx('footer-bottom')}>
-                <p>&copy; 2024 Công ty của bạn. Tất cả các quyền được bảo lưu.</p>
-            </div>
+
         </footer>
 
     );

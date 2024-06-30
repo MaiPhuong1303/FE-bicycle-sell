@@ -21,9 +21,12 @@
 
       .h4 {
         margin-bottom: 15px;
+        font-size: 20px;
+
       }
 
       .p, ul {
+
         margin: 0;
         padding: 0;
         list-style: none;
@@ -31,15 +34,14 @@
 
       .ul {
         .li {
+          color: var(--yellow-color);
           margin-bottom: 10px;
 
           .a {
-            color: white;
-            text-decoration: none;
 
-            &:hover {
-              text-decoration: underline;
-            }
+            color: var(--yellow-color);
+
+
           }
         }
       }
