@@ -7,3 +7,13 @@
   flex: 1 1 0;
 }
 
+.card-text {
+  color: red;
+  text-align: center;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Điều chỉnh khoảng cách trên/dưới nếu cần */
+}

@@ -18,6 +18,7 @@ const axiosInstance = axios.create({
     baseURL: BASE_URL,
     timeout: 10000, // Thời gian chờ tối đa (nếu cần)
     // Cấu hình khác nếu có
+
 });
 
 export default axiosInstance;
