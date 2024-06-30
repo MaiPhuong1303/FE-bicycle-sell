@@ -15,11 +15,11 @@ Loader.propTypes = {
 };
 
 Loader.defaultProps = {
-    length: 6,
+    length: 12,
 };
 
 // class loader làm skeletons
-function Loader({length = 6}: LoaderProps) {
+function Loader({length = 12}: LoaderProps) {
     return (
         <Box>
             <Grid container>
@@ -27,7 +27,7 @@ function Loader({length = 6}: LoaderProps) {
                     // nếu đt thì 11 item,... lap màn lớn thì 4item
                     <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
                         <Box padding={1}>
-                            <Skeleton variant="rectangular" width="100%" height={118}/>
+                            <Skeleton variant="rectangular" width="100%" height={280}/>
                             <Skeleton/>
                             <Skeleton width="60%"/>
                         </Box>
