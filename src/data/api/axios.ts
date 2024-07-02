@@ -21,4 +21,11 @@ const axiosInstance = axios.create({
 
 });
 
+
+axiosInstance.defaults.transformResponse = [
+    (data) => {
+        // Custom transformation logic if needed
+        return JSON.parse(data); // Chuyển đổi dữ liệu nếu cần thiết
+    },
+];
 export default axiosInstance;
