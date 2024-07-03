@@ -1,44 +1,12 @@
-import { useState } from 'react';
-import classNames from 'classnames/bind';
-import { FaEnvelope, FaLocationArrow, FaPhone } from 'react-icons/fa';
-// import Breadcrumb from '~/components/Breadcrumb';
-// import Button from '~/components/Button';
-import styles from './contact.module.scss';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { newMessage } from '~/actions/messageActions';
-// import Loader from '~/components/Loader';
-// import { clearErrors } from '~/reducers/messageReducers';
+import React from 'react';
+import ProductList from '../../components/layouts/components/ProductItemCard/producList';
 
-const cx = classNames.bind(styles);
+
 function Contact() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNo, setPhoneNo] = useState('');
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-
-    // const { loading, success } = useSelector((state) => state.newMessage);
-
-    // const dispatch = useDispatch();
-
-    const handleSubmit = () => {
-        const senderInfo = { name, email, phoneNo };
-        try {
-            // dispatch(newMessage(senderInfo, title, content));
-            clearForm();
-        } catch (error) {
-            // dispatch(clearErrors());
-        }
-    };
-
-    const clearForm = () => {
-        setName('');
-        setEmail('');
-        setPhoneNo('');
-        setTitle('');
-        setContent('');
-    };
-
+    return (
+        <div>
+            <h1>Contact Page</h1>
+          
     // if (loading) {
     //     return <Loader />;
     // } else {
@@ -87,8 +55,7 @@ function Contact() {
                                         <p>
                                             Thứ 2 đến Thứ 6 từ 8h00 đến 18h00 <br />
                                             Thứ 7 và Chủ nhật từ 8h00 đến 17h00
-                                        </p>
-                                    </span>
+                                        </p></span>
                                 </li>
                             </ul>
                         </div>
@@ -139,8 +106,7 @@ function Contact() {
                                     required
                                 />
                                 <p className={cx('caption')}>
-                                    This site is protected by reCAPTCHA and the Google{' '}
-                                    <a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
+                                    This site is protected by reCAPTCHA and the Google{' '}<a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
                                     <a href="https://policies.google.com/terms">&nbsp;Terms of Service&nbsp;</a> apply.
                                 </p>
                                 <div className={cx('submit-btn')} onClick={handleSubmit}>
@@ -153,6 +119,10 @@ function Contact() {
             </>
         );
     // }
+
+        </div>
+    );
 }
 
 export default Contact;
+        

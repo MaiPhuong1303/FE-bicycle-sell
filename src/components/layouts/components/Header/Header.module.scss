@@ -33,3 +33,8 @@
         opacity: 1;
     }
 }
+*,
+*::before,
+*::after {
+    box-sizing: unset; /* Sử dụng content-box thay vì border-box */
+}
