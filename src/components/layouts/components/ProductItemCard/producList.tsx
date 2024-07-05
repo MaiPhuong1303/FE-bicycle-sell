@@ -19,6 +19,7 @@ interface Filters {
     _page: number;
     _limit: number;
     categoryId?: number;
+    totalItems?: number;
 }
 
 function ProductList() {
@@ -35,10 +36,10 @@ function ProductList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true);
                 await delay(1000);
                 const response = await productApi.getAll(filters);
-                const totalItems = response.totalItems;
-                console.log({response});
+                const totalItems = filters.totalItems || response.totalItems;
                 setProducts(response.data);
                 setLoading(false);
                 setPagination({
@@ -48,7 +49,7 @@ function ProductList() {
                 });
             } catch (error) {
                 console.error('Lỗi khi lấy dữ liệu sản phẩm:', error);
-                setLoading(true);
+                setLoading(false);
             }
         };
 
@@ -71,17 +72,23 @@ function ProductList() {
             ...newFilters,
             _page: 1,
         });
+        setPagination((prevPagination) => ({
+            ...prevPagination,
+            page: 1,
+            totalItems: newFilters.totalItems || prevPagination.totalItems
+        }));
     };
+
     return (
         <Box>
             <Container>
                 <Grid container spacing={3}>
-                    <Grid item className={cx('left')}>
+                    <Grid item xs={12} md={3} className={cx('left')}>
                         <Paper elevation={3}>
                             <ProductFilters filters={filters} onChange={handleFiltersChange}/>
                         </Paper>
                     </Grid>
-                    <Grid item className={cx('right')}>
+                    <Grid item xs={12} md={9} className={cx('right')}>
                         <Paper elevation={3}>
                             {loading ? (
                                 <Loader/>
@@ -95,7 +102,7 @@ function ProductList() {
                                                          alt={product.name}/>
                                                     <div className={cx('card-body')}>
                                                         <h5 className={cx('card-title')}>
-                                                            {product.name.length > 40 ? (product.name.substring(0, 40) + '...') : product.name}
+                                                            {product.name.toLowerCase().length > 25 ? (product.name.toLowerCase().substring(0, 25) + '...') : product.name.toLowerCase()}
                                                         </h5>
                                                         <p className={cx('card-text')}>
                                                             <strong>

@@ -7,7 +7,7 @@ import About from "../pages/About";
 import Collection from "../pages/Collection/Collection";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
-import Instruct from'../pages/Instruct';
+import Instruct from '../pages/Instruct';
 
 //public routes
 const publicRoutes = [
@@ -17,12 +17,11 @@ const publicRoutes = [
     {path: '/collection', component: Collection},
     {path: '/instruct', component: Instruct},
     // { path: '/news', component: News },
-    // { path: '/collection/thoi-trang-the-thao', component: Collection },
-    // { path: '/collection/quan-ao-bong-da', component: Collection },
-    // { path: '/collection/quan-ao-bong-chuyen', component: Collection },
-    // { path: '/collection/trang-phuc-chay-bo', component: Collection },
-    // { path: '/collection/phu-kien-the-thao', component: Collection },
-    // { path: '/collection/do-clb-doi-tuyen', component: Collection },
+    {path: '/collection/xe-dap-the-thao', component: Collection},
+    {path: '/collection/xe-dap-thoi-trang-thong-dung', component: Collection},
+    {path: '/collection/xe-dap-tre-em', component: Collection},
+    {path: '/collection/xe-dap-dien', component: Collection},
+    {path: '/collection/phu-kien', component: Collection},
     // { path: '/product/:id', component: ProductDetails },
     // { path: '/search/:keyword', component: Search },
     // { path: '/account', component: Account },
