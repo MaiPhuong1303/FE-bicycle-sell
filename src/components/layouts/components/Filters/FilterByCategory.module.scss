@@ -1,25 +1,208 @@
+////////.root {
+////////  padding: 16px;
+////////}
+////////
+////////
+////////.menu {
+////////  padding: 0;
+////////  margin: 0;
+////////  list-style-type: none;
+////////
+////////  > li {
+////////    margin-top: 16px;
+////////
+////////    &.active {
+////////      color: var(--yellow-color);
+////////    }
+////////
+////////    &:hover {
+////////      cursor: pointer;
+////////      color: var(--yellow-color);
+////////    }
+////////
+////////  }
+////////
+////////}
+////////
+////////.tick {
+////////  width: 1em;
+////////  height: 1em;
+////////  background-color: #007bff; /* Màu nền của ô vuông */
+////////  display: inline-block;
+////////  margin-right: 0.5em; /* Khoảng cách giữa ô vuông và tên danh mục */
+////////  visibility: hidden; /* Ẩn ban đầu, chỉ hiển thị khi active */
+////////}
+////////
+////////.active .tick {
+////////  visibility: visible; /* Hiển thị ô vuông khi active */
+////////}
+//////.root {
+//////  padding: 16px;
+//////}
+//////
+//////.menu {
+//////  padding: 0;
+//////  margin: 0;
+//////  list-style-type: none;
+//////
+//////  > li {
+//////    margin-top: 16px;
+//////    display: flex;
+//////    align-items: center;
+//////
+//////    &:hover {
+//////      cursor: pointer;
+//////      color: var(--yellow-color); /* Màu khi hover */
+//////    }
+//////
+//////    .tick {
+//////      width: 16px;
+//////      height: 16px;
+//////      margin-right: 8px;
+//////      fill: #007bff; /* Màu của dấu tick */
+//////      display: none; /* Ẩn dấu tick ban đầu */
+//////    }
+//////
+//////    &.active {
+//////      color: var(--yellow-color); /* Màu khi active */
+//////      .tick {
+//////        display: inline-block; /* Hiển thị dấu tick khi active */
+//////      }
+//////    }
+//////  }
+//////}
+////.root {
+////  padding: 16px;
+////}
+////
+////.menu {
+////  padding: 0;
+////  margin: 0;
+////  list-style-type: none;
+////
+////  > li {
+////    margin-top: 16px;
+////    display: flex;
+////    align-items: center;
+////    cursor: pointer;
+////    color: #000;
+////    transition: background-color 0.3s ease;
+////
+////    .tick {
+////      width: 16px;
+////      height: 16px;
+////      margin-right: 8px;
+////      fill: #007bff; /* Màu của dấu tick */
+////      display: none; /* Ẩn dấu tick ban đầu */
+////    }
+////
+////    &:hover {
+////      background-color: #f0f0f0; /* Màu nền khi hover */
+////    }
+////
+////    &.active {
+////      color: var(--yellow-color); /* Màu khi active */
+////      .tick {
+////        display: inline-block; /* Hiển thị dấu tick khi active */
+////      }
+////    }
+////  }
+////}
+//.root {
+//  padding: 16px;
+//}
+//
+//.menu {
+//  padding: 0;
+//  margin: 0;
+//  list-style-type: none;
+//
+//  > li {
+//    margin-top: 16px;
+//    display: flex;
+//    align-items: center;
+//    cursor: pointer;
+//    color: #000;
+//    transition: background-color 0.3s ease;
+//
+//    .tick {
+//      width: 16px;
+//      height: 16px;
+//      margin-right: 8px;
+//      fill: #007bff; /* Màu của dấu tick */
+//      display: none; /* Ẩn dấu tick ban đầu */
+//    }
+//
+//    &:hover {
+//      background-color: #f0f0f0; /* Màu nền khi hover */
+//    }
+//
+//    &.active {
+//      color: var(--yellow-color); /* Màu khi active */
+//      .tick {
+//        display: inline-block; /* Hiển thị dấu tick khi active */
+//      }
+//    }
+//  }
+//}
 .root {
   padding: 16px;
-}
 
+  .title {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: Cursive;
+    font-style: italic;
+  }
+}
 
 .menu {
   padding: 0;
   margin: 0;
   list-style-type: none;
+  background: linear-gradient(to right, #e0f5f0, #eaccf8, #b2a8fd);
 
   > li {
     margin-top: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.3s ease;
 
-    &.active {
-      color: var(--yellow-color);
+    .box {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      border: 1px solid #000; /* Viền màu đen của ô vuông rỗng */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .tick {
+      display: none; /* Ẩn dấu tick ban đầu */
+      font-size: 14px; /* Kích thước của dấu tick */
+      color: var(--background-color); /* Màu của dấu tick */
+      font-weight: 700;
     }
 
     &:hover {
-      cursor: pointer;
-      color: var(--yellow-color);
+      background-color: #f0f0f0; /* Màu nền khi hover */
     }
 
-  }
+    &.active {
+      color: var(--yellow-color); /* Màu khi active */
 
+      .tick {
+        display: inline-block; /* Hiển thị dấu tick khi active */
+      }
+    }
+  }
 }

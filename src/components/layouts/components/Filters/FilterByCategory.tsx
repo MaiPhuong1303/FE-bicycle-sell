@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import Box from "@mui/system/Box";
-import {Typography} from "@mui/material";
-import categoryAPI, {Category} from "../../../../data/api/categoryAPI"; // Import Category interface từ categoryAPI
+import Box from '@mui/system/Box';
+import {Typography} from '@mui/material';
+import categoryAPI, {Category} from '../../../../data/api/categoryAPI'; // Import Category interface từ categoryAPI
 import classNames from 'classnames/bind';
 import styles from './FilterByCategory.module.scss';
 
@@ -10,6 +10,7 @@ interface FilterByCategoryProps {
 }
 
 const cx = classNames.bind(styles);
+
 const FilterByCategory: React.FC<FilterByCategoryProps> = ({onChange}) => {
     const [categoryList, setCategoryList] = useState<Category[]>([]); // Sử dụng Category từ categoryAPI
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -24,9 +25,7 @@ const FilterByCategory: React.FC<FilterByCategoryProps> = ({onChange}) => {
                         id: x.id,
                         name: x.name,
                     }))
-                )
-                // console.log({response});
-                // setCategoryList(response); // Cập nhật danh sách danh mục vào state
+                );
             } catch (error) {
                 console.log('Failed to fetch category list', error);
             }
@@ -44,17 +43,20 @@ const FilterByCategory: React.FC<FilterByCategoryProps> = ({onChange}) => {
 
     return (
         <Box className={cx('root')}>
-            <Typography variant="subtitle2"> DANH MỤC SẢN PHẨM</Typography>
+            <Typography variant="subtitle2" className={cx('title')}>DANH MỤC SẢN PHẨM</Typography>
 
             <ul className={cx('menu')}>
                 {categoryList.length > 0 ? (
-                    categoryList.map(category => (
+                    categoryList.map((category) => (
                         <li
                             key={category.id}
-                            className={cx({active: category.id === selectedCategoryId})}
+                            className={cx('menuItem', {active: category.id === selectedCategoryId})}
                             onClick={() => handleCategoryClick(category)}
                         >
-                            <Typography variant="body2">{category.name}</Typography>
+                            <span className={cx('box')}>
+                                <span className={cx('tick')}>&#10003;</span> {/* Dấu tick */}
+                            </span>
+                            <Typography variant="body2" className={cx('name')}>{category.name}</Typography>
                         </li>
                     ))
                 ) : (
