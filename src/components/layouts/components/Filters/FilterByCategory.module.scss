@@ -1,0 +1,25 @@
+.root {
+  padding: 16px;
+}
+
+
+.menu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  > li {
+    margin-top: 16px;
+
+    &.active {
+      color: var(--yellow-color);
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: var(--yellow-color);
+    }
+
+  }
+
+}

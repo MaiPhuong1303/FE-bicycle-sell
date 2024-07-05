@@ -10,31 +10,33 @@
 //    z-index: 1000; /* Đảm bảo header nằm trên cùng */
 //}
 .header-hidden {
-    .middle {
-        display: none;
-    }
-    .navbar-wrapper {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: rgba(145, 152, 166, 0.25);
-        animation: slideDown 0.3s ease-in-out;
-    }
+  .middle {
+    display: none;
+  }
+
+  .navbar-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(246, 247, 250, 0.25);
+    animation: slideDown 0.3s ease-in-out;
+  }
 }
 
 @keyframes slideDown {
-    from {
-        top: -60px;
-        opacity: 0;
-    }
-    to {
-        top: 0;
-        opacity: 1;
-    }
+  from {
+    top: -60px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
+
 *,
 *::before,
 *::after {
-    box-sizing: unset; /* Sử dụng content-box thay vì border-box */
+  box-sizing: unset; /* Sử dụng content-box thay vì border-box */
 }
