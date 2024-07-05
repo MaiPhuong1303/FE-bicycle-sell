@@ -32,12 +32,13 @@ function ProductList() {
     });
     const [loading, setLoading] = useState(true);
     const [filters, setFilters] = useState<Filters>({_page: 1, _limit: 12});
+    const [currentPage, setCurrentPage] = useState(1); // State để lưu trữ trang hiện tại
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                await delay(1000);
+                await delay(300);
                 const response = await productApi.getAll(filters);
                 const totalItems = filters.totalItems || response.totalItems;
                 setProducts(response.data);
@@ -57,14 +58,15 @@ function ProductList() {
     }, [filters]);
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
-        setFilters((prevFilters) => ({
+        setFilters(prevFilters => ({
             ...prevFilters,
             _page: page
         }));
-        setPagination((prevPagination) => ({
+        setPagination(prevPagination => ({
             ...prevPagination,
             page: page
         }));
+        setCurrentPage(page); // Cập nhật currentPage khi thay đổi trang
     };
 
     const handleFiltersChange = (newFilters: Filters) => {
@@ -72,12 +74,18 @@ function ProductList() {
             ...newFilters,
             _page: 1,
         });
-        setPagination((prevPagination) => ({
+        setPagination(prevPagination => ({
             ...prevPagination,
             page: 1,
             totalItems: newFilters.totalItems || prevPagination.totalItems
         }));
+        setCurrentPage(1); // Cập nhật currentPage khi thay đổi bộ lọc
     };
+
+    useEffect(() => {
+        // Sau khi currentPage thay đổi, cuộn lên đầu trang
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }, [currentPage]);
 
     return (
         <Box>
@@ -95,35 +103,41 @@ function ProductList() {
                             ) : (
                                 <div className={cx('container')}>
                                     <div className={cx('row')}>
-                                        {products.map(product => (
-                                            <div key={product.id} className={cx('col-md-3 mb-3')}>
-                                                <div className={cx('card')}>
-                                                    <img src={product.urlImage} className={cx('card-img-top')}
-                                                         alt={product.name}/>
-                                                    <div className={cx('card-body')}>
-                                                        <h5 className={cx('card-title')}>
-                                                            {product.name.toLowerCase().length > 25 ? (product.name.toLowerCase().substring(0, 25) + '...') : product.name.toLowerCase()}
-                                                        </h5>
-                                                        <p className={cx('card-text')}>
-                                                            <strong>
-                                                                {new Intl.NumberFormat('vi-VN', {
-                                                                    style: 'currency',
-                                                                    currency: 'VND'
-                                                                }).format(parseFloat(product.price))}
-                                                            </strong>
-                                                        </p>
-                                                        <div className={cx('d-flex', 'justify-content-between')}>
-                                                            <a href="#" className={cx('btn', 'btn-primary')}>Xem chi
-                                                                tiết</a>
-                                                            <button className={cx('btn', 'btn-secondary')}
-                                                                    title="Thêm vào giỏ hàng">
-                                                                <FaShoppingCart/>
-                                                            </button>
+                                        {products.length > 0 ? (
+                                            products.map(product => (
+                                                <div key={product.id} className={cx('col-md-3 mb-3')}>
+                                                    <div className={cx('card')}>
+                                                        <img src={product.urlImage} className={cx('card-img-top')}
+                                                             alt={product.name}/>
+                                                        <div className={cx('card-body')}>
+                                                            <h5 className={cx('card-title')}>
+                                                                {product.name.toLowerCase().length > 25 ? (product.name.toLowerCase().substring(0, 25) + '...') : product.name.toLowerCase()}
+                                                            </h5>
+                                                            <p className={cx('card-text')}>
+                                                                <strong>
+                                                                    {new Intl.NumberFormat('vi-VN', {
+                                                                        style: 'currency',
+                                                                        currency: 'VND'
+                                                                    }).format(parseFloat(product.price))}
+                                                                </strong>
+                                                            </p>
+                                                            <div className={cx('d-flex', 'justify-content-between')}>
+                                                                <a href="#" className={cx('btn', 'btn-primary')}>Xem chi
+                                                                    tiết</a>
+                                                                <button className={cx('btn', 'btn-secondary')}
+                                                                        title="Thêm vào giỏ hàng">
+                                                                    <FaShoppingCart/>
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            ))
+                                        ) : (
+                                            <div className={cx('no-products')}>
+                                                Không có sản phẩm nào.
                                             </div>
-                                        ))}
+                                        )}
                                     </div>
                                 </div>
                             )}
