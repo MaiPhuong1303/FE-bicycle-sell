@@ -23,6 +23,7 @@ const categoryAPI: CategoryAPI = {
         const url = '/categories';
         return axiosInstance.get(url, {params})
             .then(response => response.data); // Trả về chỉ mục 'categories' từ dữ liệu trả về
+
     },
     get(id) {
         const url = `/categories/${id}`;
