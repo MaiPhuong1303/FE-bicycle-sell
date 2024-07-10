@@ -21,6 +21,8 @@
 
       .h4 {
         margin-bottom: 15px;
+        font-size: 20px;
+
       }
 
       .p, ul {
@@ -31,12 +33,12 @@
 
       .ul {
         .li {
+          color: var(--yellow-color);
           margin-bottom: 10px;
 
           .a {
-            color: white;
+            color: var(--yellow-color);
             text-decoration: none;
-
             &:hover {
               text-decoration: underline;
             }
