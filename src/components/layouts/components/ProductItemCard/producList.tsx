@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import productApi from '../../../../data/api/productAPI';
 import {Product} from './product';
 import Box from '@mui/system/Box';
@@ -18,11 +19,12 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 interface Filters {
     _page: number;
     _limit: number;
-    categoryId?: number;
+    categories_id?: number; // Sửa thành categories_id
     totalItems?: number;
+    categoryName?: string; // Added categoryName to Filters interface
 }
 
-function ProductList() {
+function ProductList({categoryName}: { categoryName?: string }) {
     const [products, setProducts] = useState<Product[]>([]);
     const [pagination, setPagination] = useState({
         count: 1,
@@ -31,8 +33,30 @@ function ProductList() {
         limit: 12,
     });
     const [loading, setLoading] = useState(true);
-    const [filters, setFilters] = useState<Filters>({_page: 1, _limit: 12});
-    const [currentPage, setCurrentPage] = useState(1); // State để lưu trữ trang hiện tại
+    const [filters, setFilters] = useState<Filters>({_page: 1, _limit: 12, categoryName});
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const categoryMap: { [key: string]: number } = {
+            'xe-dap-the-thao': 1,
+            'xe-dap-thoi-trang-thong-dung': 2,
+            'xe-dap-tre-em': 3,
+            'xe-dap-dien': 4,
+            'phu-kien': 5,
+        };
+
+        const pathSegments = location.pathname.split('/');
+        const categorySlug = pathSegments[pathSegments.length - 1];
+        const categories_id = categoryMap[categorySlug]; // Sửa thành categories_id
+
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            _page: 1,
+            categories_id, // Sửa thành categories_id
+        }));
+    }, [location.pathname]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,7 +73,7 @@ function ProductList() {
                     totalItems
                 });
             } catch (error) {
-                console.error('Lỗi khi lấy dữ liệu sản phẩm:', error);
+                console.error('Error fetching product data:', error);
                 setLoading(false);
             }
         };
@@ -66,7 +90,7 @@ function ProductList() {
             ...prevPagination,
             page: page
         }));
-        setCurrentPage(page); // Cập nhật currentPage khi thay đổi trang
+        setCurrentPage(page);
     };
 
     const handleFiltersChange = (newFilters: Filters) => {
@@ -79,11 +103,10 @@ function ProductList() {
             page: 1,
             totalItems: newFilters.totalItems || prevPagination.totalItems
         }));
-        setCurrentPage(1); // Cập nhật currentPage khi thay đổi bộ lọc
+        setCurrentPage(1);
     };
 
     useEffect(() => {
-        // Sau khi currentPage thay đổi, cuộn lên đầu trang
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, [currentPage]);
 
