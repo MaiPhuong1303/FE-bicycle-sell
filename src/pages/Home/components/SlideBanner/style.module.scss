@@ -1,0 +1,32 @@
+/* style.module.scss */
+.slider {
+    .slick-slide {
+      text-align: center;
+      color: #fff;
+      background: #364d79;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .slick-prev, .slick-next {
+      z-index: 1;
+      color: #fff;
+    }
+  
+    .banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      background-color: #ff5f6d;
+
+      .image {
+        width: 100vw;
+        height:100vh;
+        object-fit: cover;
+      }
+    }
+  }
+  
