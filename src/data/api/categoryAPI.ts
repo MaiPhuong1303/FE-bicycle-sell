@@ -1,11 +1,10 @@
 import axiosInstance from "./axios";
 import {ProductParams} from "./productAPI";
 
-// Định nghĩa interface cho đối tượng Category
-// categoryAPI.ts
 export interface Category {
     id: number;
     name: string;
+    path: string;
     // Other properties if needed
 }
 
