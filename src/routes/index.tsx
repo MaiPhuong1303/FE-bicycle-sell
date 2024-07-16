@@ -18,7 +18,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 import Instruct from "../pages/Instruct";
-import { SignUpPage } from "../pages/Signup";
+import { SignUpPage } from "../pages/Signup/Signup";
 
 //public routes
 const publicRoutes = [
