@@ -1,3 +1,4 @@
+
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import images from "../../../../../images/images";
@@ -6,6 +7,14 @@ import Cart from "../../../../Cart/cart";
 import Search from "../../../../Search/Search";
 import styles from "./MiddleHeader.module.scss";
 import { Dropdown } from "../Dropdown";
+
+import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
+import images from '../../../../../images/images';
+import Login from '../../Login/login';
+import Cart from '../../../../Cart/cart';
+import Search from '../../Search/Search';
+import styles from './MiddleHeader.module.scss';
 
 
 const cx = classNames.bind(styles);

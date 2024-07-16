@@ -8,11 +8,9 @@
 }
 
 .container {
-  padding: 14px 0px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 35px;
 }
 
 .logo {

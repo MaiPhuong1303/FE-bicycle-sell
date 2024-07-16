@@ -1,44 +1,12 @@
-import { useState } from 'react';
-import classNames from 'classnames/bind';
-import { FaEnvelope, FaLocationArrow, FaPhone } from 'react-icons/fa';
-// import Breadcrumb from '~/components/Breadcrumb';
-// import Button from '~/components/Button';
-import styles from './contact.module.scss';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { newMessage } from '~/actions/messageActions';
-// import Loader from '~/components/Loader';
-// import { clearErrors } from '~/reducers/messageReducers';
+import React from 'react';
+import ProductList from '../../components/layouts/components/ProductItemCard/producList';
 
-const cx = classNames.bind(styles);
+
 function Contact() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNo, setPhoneNo] = useState('');
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-
-    // const { loading, success } = useSelector((state) => state.newMessage);
-
-    // const dispatch = useDispatch();
-
-    const handleSubmit = () => {
-        const senderInfo = { name, email, phoneNo };
-        try {
-            // dispatch(newMessage(senderInfo, title, content));
-            clearForm();
-        } catch (error) {
-            // dispatch(clearErrors());
-        }
-    };
-
-    const clearForm = () => {
-        setName('');
-        setEmail('');
-        setPhoneNo('');
-        setTitle('');
-        setContent('');
-    };
-
+    return (
+        <div>
+            <h1>Contact Page</h1>
+          
     // if (loading) {
     //     return <Loader />;
     // } else {
@@ -57,7 +25,7 @@ function Contact() {
                                     </span>
                                     <span className={cx('description')}>
                                         <p className={cx('title')}>Địa chỉ</p>
-                                        <p>Số 2, đường 17, phường Linh Trung, Quận Thủ Đức, TP.HCM</p>
+                                        <p>Khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
                                     </span>
                                 </li>
                                 <li>
@@ -66,7 +34,7 @@ function Contact() {
                                     </span>
                                     <span className={cx('description')}>
                                         <p className={cx('title')}>Email</p>
-                                        <p>footbalshop123@gmail.com</p>
+                                        <p>cchanh375@gmail.com</p>
                                     </span>
                                 </li>
                                 <li>
@@ -75,7 +43,7 @@ function Contact() {
                                     </span>
                                     <span className={cx('description')}>
                                         <p className={cx('title')}>Điện thoại</p>
-                                        <p>0342.560.042</p>
+                                        <p>0877.287.869</p>
                                     </span>
                                 </li>
                                 <li>
@@ -85,10 +53,9 @@ function Contact() {
                                     <span className={cx('description')}>
                                         <p className={cx('title')}>Thời gian làm việc</p>
                                         <p>
-                                            Thứ 2 đến Thứ 6 từ 8h đến 18h; <br />
+                                            Thứ 2 đến Thứ 6 từ 8h00 đến 18h00 <br />
                                             Thứ 7 và Chủ nhật từ 8h00 đến 17h00
-                                        </p>
-                                    </span>
+                                        </p></span>
                                 </li>
                             </ul>
                         </div>
@@ -98,7 +65,7 @@ function Contact() {
                             {/*{success ? (*/}
                                 <div className={cx('anounce')}>
                                     <p>
-                                        Cám ơn bạn đã liên hệ, Chúng tôi sẽ trả lời trực tiếp thông qua email và số điện
+                                        Cám ơn bạn đã liên hệ, chúng tôi sẽ trả lời trực tiếp thông qua email và số điện
                                         thoại bạn để lại ngay khi có thể
                                     </p>
                                 </div>
@@ -139,8 +106,7 @@ function Contact() {
                                     required
                                 />
                                 <p className={cx('caption')}>
-                                    This site is protected by reCAPTCHA and the Google{' '}
-                                    <a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
+                                    This site is protected by reCAPTCHA and the Google{' '}<a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
                                     <a href="https://policies.google.com/terms">&nbsp;Terms of Service&nbsp;</a> apply.
                                 </p>
                                 <div className={cx('submit-btn')} onClick={handleSubmit}>
@@ -153,6 +119,10 @@ function Contact() {
             </>
         );
     // }
+
+        </div>
+    );
 }
 
 export default Contact;
+        
