@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import productApi from '../../../../data/api/productAPI';
 import {Product} from './product';
 import Box from '@mui/system/Box';
@@ -129,13 +129,19 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                         {products.length > 0 ? (
                                             products.map(product => (
                                                 <div key={product.id} className={cx('col-md-3 mb-3')}>
+
+
                                                     <div className={cx('card')}>
-                                                        <img src={product.urlImage} className={cx('card-img-top')}
-                                                             alt={product.name}/>
+                                                        <Link to={`/products/${product.id}`}>
+                                                            <img src={product.urlImage} className={cx('card-img-top')}
+                                                                 alt={product.name}/>
+                                                        </Link>
                                                         <div className={cx('card-body')}>
-                                                            <h5 className={cx('card-title')}>
-                                                                {product.name.toLowerCase().length > 25 ? (product.name.toLowerCase().substring(0, 25) + '...') : product.name.toLowerCase()}
-                                                            </h5>
+                                                            <Link to={`/products/${product.id}`}>
+                                                                <h5 className={cx('card-title', 'custom-link')}>
+                                                                    {product.name.toLowerCase().length > 25 ? (product.name.toLowerCase().substring(0, 25) + '...') : product.name.toLowerCase()}
+                                                                </h5>
+                                                            </Link>
                                                             <p className={cx('card-text')}>
                                                                 <strong>
                                                                     {new Intl.NumberFormat('vi-VN', {
@@ -145,8 +151,11 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                                                 </strong>
                                                             </p>
                                                             <div className={cx('d-flex', 'justify-content-between')}>
-                                                                <a href="#" className={cx('btn', 'btn-primary')}>Xem chi
-                                                                    tiết</a>
+                                                                <Link to={`/products/${product.id}`}>
+                                                                    <a href="#" className={cx('btn', 'btn-primary',)}>Xem
+                                                                        chi
+                                                                        tiết</a>
+                                                                </Link>
                                                                 <button className={cx('btn', 'btn-secondary')}
                                                                         title="Thêm vào giỏ hàng">
                                                                     <FaShoppingCart/>

@@ -4,7 +4,7 @@ const routes = {
     news: '/news',
     about: '/about',
     contact: '/contact',
-    product: '/product',
+    product: '/products',
     instruct: '/instruct',
 };
 

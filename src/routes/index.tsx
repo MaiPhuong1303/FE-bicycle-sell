@@ -8,21 +8,21 @@ import Collection from "../pages/Collection/Collection";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 import Instruct from '../pages/Instruct';
-
+import ProductDetails from "../pages/ProductDetails";
 
 //public routes
 const publicRoutes = [
     {path: '/', component: Home},
     {path: '/contact', component: Contact},
     {path: '/about', component: About},
-
-    {path: '/collection', component: Collection},
     {path: '/instruct', component: Instruct},
     {path: '/collection/xe-dap-the-thao', component: Collection},
     {path: '/collection/xe-dap-thoi-trang-thong-dung', component: Collection},
     {path: '/collection/xe-dap-tre-em', component: Collection},
     {path: '/collection/xe-dap-dien', component: Collection},
     {path: '/collection/phu-kien', component: Collection},
+    {path: '/collection', component: Collection},
+    {path: '/products/:id', component: ProductDetails},
     // { path: '/search/:keyword', component: Search },
     // { path: '/account', component: Account },
     // { path: '/myorders', component: Account },
