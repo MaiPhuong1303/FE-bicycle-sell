@@ -5,6 +5,7 @@
 
 .right {
   flex: 1 1 0;
+
 }
 
 .card-text {
@@ -51,4 +52,25 @@
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
   margin-top: 10px;
+  transition: box-shadow 0.3s; /* Thêm hiệu ứng chuyển đổi cho box-shadow */
 }
+
+.card:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Hiệu ứng nổi lên khi hover */
+}
+
+a {
+  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  text-decoration: none;
+}
+
+.custom-link {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+.custom-link:hover {
+  color: var(--yellow-color) !important; /* Màu khi hover là màu vàng */
+  text-decoration: none !important;
+}
+
