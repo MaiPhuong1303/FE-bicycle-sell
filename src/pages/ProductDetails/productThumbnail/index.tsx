@@ -13,7 +13,16 @@ interface ProductThumbnailProps {
 const ProductThumbnail: React.FC<ProductThumbnailProps> = ({product}) => {
     const [mainImage, setMainImage] = useState(product.urlImage);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const images = JSON.parse(product.images.replace(/'/g, '"'));
+
+    let images: any[] = [];
+    try {
+        images = JSON.parse(product.images.replace(/'/g, '"'));
+    } catch (error) {
+        console.error("Invalid JSON string:", product.images);
+        // If the JSON string is invalid, we leave the images array empty
+        images = [];
+    }
+
     const containerRef = useRef<HTMLDivElement>(null);
 
     const scrollLeft = () => {
@@ -63,7 +72,6 @@ const ProductThumbnail: React.FC<ProductThumbnailProps> = ({product}) => {
                 ))}
             </Box>
             <button className={cx('arrow', 'right')} onClick={scrollRight}>&gt;</button>
-            
         </Box>
     );
 };

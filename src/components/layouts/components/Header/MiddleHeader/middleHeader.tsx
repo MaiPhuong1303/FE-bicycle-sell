@@ -1,14 +1,30 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import images from '../../../../../images/images';
 import Login from '../../Login/login';
 import Cart from '../../../../Cart/cart';
 import Search from '../../Search/Search';
 import styles from './MiddleHeader.module.scss';
+import axiosInstance from '../../../../../data/api/axios';
 
 const cx = classNames.bind(styles);
-const MiddleHeader = () =>{
 
+const MiddleHeader = () => {
+    const handleFilterChange = (newFilters: { searchTerm: string }) => {
+        axiosInstance.get('/products', {
+            params: {
+                name: newFilters.searchTerm,
+            },
+        })
+            .then(response => {
+                console.log('Filtered products: ', response.data);
+                // Bây giờ chúng ta cần đưa sản phẩm đã lọc vào một trang khác
+            })
+            .catch(error => {
+                console.error('Error searching products: ', error);
+            });
+    };
 
     return (
         <div className={cx('middle')}>
@@ -29,23 +45,20 @@ const MiddleHeader = () =>{
                     </div>
                 </div>
                 <div className={cx('search')}>
-                    <Search/>
+                    {/* Truyền hàm handleFilterChange vào component Search */}
+                    <Search onSubmit={handleFilterChange}/>
                 </div>
                 <div className={cx('action')}>
                     <div>
                         <Login/>
-
                     </div>
-                    <div >
+                    <div>
                         <Cart/>
                     </div>
                 </div>
             </div>
         </div>
-
-    )
-
+    );
 };
 
 export default MiddleHeader;
-

@@ -9,8 +9,8 @@ import styles from './ProductItemCard.module.scss';
 import Loader from '../Loader';
 import {Container} from '@mui/system';
 import {Grid, Pagination, Paper} from '@mui/material';
-import {FaShoppingCart} from "react-icons/fa";
-import ProductFilters from "./ProductFilters";
+import {FaShoppingCart} from 'react-icons/fa';
+import ProductFilters from './ProductFilters';
 
 const cx = classNames.bind(styles);
 
@@ -19,9 +19,10 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 interface Filters {
     _page: number;
     _limit: number;
-    categories_id?: number; // Sửa thành categories_id
+    categories_id?: number;
     totalItems?: number;
-    categoryName?: string; // Added categoryName to Filters interface
+    categoryName?: string;
+    name?: string;
 }
 
 function ProductList({categoryName}: { categoryName?: string }) {
@@ -35,7 +36,6 @@ function ProductList({categoryName}: { categoryName?: string }) {
     const [loading, setLoading] = useState(true);
     const [filters, setFilters] = useState<Filters>({_page: 1, _limit: 12, categoryName});
     const [currentPage, setCurrentPage] = useState(1);
-
     const location = useLocation();
 
     useEffect(() => {
@@ -49,12 +49,12 @@ function ProductList({categoryName}: { categoryName?: string }) {
 
         const pathSegments = location.pathname.split('/');
         const categorySlug = pathSegments[pathSegments.length - 1];
-        const categories_id = categoryMap[categorySlug]; // Sửa thành categories_id
+        const categories_id = categoryMap[categorySlug]; // Chỉnh sửa thành categories_id
 
-        setFilters((prevFilters) => ({
+        setFilters(prevFilters => ({
             ...prevFilters,
             _page: 1,
-            categories_id, // Sửa thành categories_id
+            categories_id,
         }));
     }, [location.pathname]);
 
@@ -70,7 +70,7 @@ function ProductList({categoryName}: { categoryName?: string }) {
                 setPagination({
                     ...pagination,
                     count: Math.ceil(totalItems / filters._limit),
-                    totalItems
+                    totalItems,
                 });
             } catch (error) {
                 console.error('Error fetching product data:', error);
@@ -84,11 +84,11 @@ function ProductList({categoryName}: { categoryName?: string }) {
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
         setFilters(prevFilters => ({
             ...prevFilters,
-            _page: page
+            _page: page,
         }));
         setPagination(prevPagination => ({
             ...prevPagination,
-            page: page
+            page,
         }));
         setCurrentPage(page);
     };
@@ -101,7 +101,7 @@ function ProductList({categoryName}: { categoryName?: string }) {
         setPagination(prevPagination => ({
             ...prevPagination,
             page: 1,
-            totalItems: newFilters.totalItems || prevPagination.totalItems
+            totalItems: newFilters.totalItems || prevPagination.totalItems,
         }));
         setCurrentPage(1);
     };
@@ -109,6 +109,26 @@ function ProductList({categoryName}: { categoryName?: string }) {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, [currentPage]);
+
+    // Hàm xử lý khi thay đổi bộ lọc từ component Search
+    const handleFilterChange = async (newFilters: { searchTerm: string }) => {
+        try {
+            setLoading(true);
+            await delay(300);
+            const response = await productApi.getAll({...filters, name: newFilters.searchTerm});
+            const totalItems = filters.totalItems || response.totalItems;
+            setProducts(response.data);
+            setLoading(false);
+            setPagination({
+                ...pagination,
+                count: Math.ceil(totalItems / filters._limit),
+                totalItems,
+            });
+        } catch (error) {
+            console.error('Error searching products:', error);
+            setLoading(false);
+        }
+    };
 
     return (
         <Box>
@@ -129,32 +149,35 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                         {products.length > 0 ? (
                                             products.map(product => (
                                                 <div key={product.id} className={cx('col-md-3 mb-3')}>
-
-
                                                     <div className={cx('card')}>
                                                         <Link to={`/products/${product.id}`}>
-                                                            <img src={product.urlImage} className={cx('card-img-top')}
-                                                                 alt={product.name}/>
+                                                            <img
+                                                                src={product.urlImage}
+                                                                className={cx('card-img-top')}
+                                                                alt={product.name}
+                                                            />
                                                         </Link>
                                                         <div className={cx('card-body')}>
                                                             <Link to={`/products/${product.id}`}>
                                                                 <h5 className={cx('card-title', 'custom-link')}>
-                                                                    {product.name.toLowerCase().length > 25 ? (product.name.toLowerCase().substring(0, 25) + '...') : product.name.toLowerCase()}
+                                                                    {product.name.toLowerCase().length > 25
+                                                                        ? product.name.toLowerCase().substring(0, 25) + '...'
+                                                                        : product.name.toLowerCase()}
                                                                 </h5>
                                                             </Link>
                                                             <p className={cx('card-text')}>
                                                                 <strong>
                                                                     {new Intl.NumberFormat('vi-VN', {
                                                                         style: 'currency',
-                                                                        currency: 'VND'
+                                                                        currency: 'VND',
                                                                     }).format(parseFloat(product.price))}
                                                                 </strong>
                                                             </p>
                                                             <div className={cx('d-flex', 'justify-content-between')}>
                                                                 <Link to={`/products/${product.id}`}>
-                                                                    <a href="#" className={cx('btn', 'btn-primary',)}>Xem
-                                                                        chi
-                                                                        tiết</a>
+                                                                    <a href="#" className={cx('btn', 'btn-primary')}>
+                                                                        Xem chi tiết
+                                                                    </a>
                                                                 </Link>
                                                                 <button className={cx('btn', 'btn-secondary')}
                                                                         title="Thêm vào giỏ hàng">
@@ -166,9 +189,7 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                                 </div>
                                             ))
                                         ) : (
-                                            <div className={cx('no-products')}>
-                                                Không có sản phẩm nào.
-                                            </div>
+                                            <div className={cx('no-products')}>Không có sản phẩm nào.</div>
                                         )}
                                     </div>
                                 </div>
