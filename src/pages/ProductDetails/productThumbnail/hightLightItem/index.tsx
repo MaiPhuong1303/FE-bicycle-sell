@@ -12,18 +12,38 @@ interface HightLightItemProps {
 }
 
 const HightLightItem: React.FC<HightLightItemProps> = ({product}) => {
-    const highlights = JSON.parse(product.highlight_items.replace(/'/g, '"'));
+    let highlights: string[] = [];
+
+    if (product.highlight_items && typeof product.highlight_items === 'string') {
+        try {
+            // Kiểm tra và sửa chuỗi JSON bị cắt ngắn
+            const fixedHighlightItems = product.highlight_items.endsWith(']')
+                ? product.highlight_items
+                : product.highlight_items + ']';
+
+            // Thử phân tích chuỗi JSON
+            highlights = JSON.parse(fixedHighlightItems.replace(/'/g, '"'));
+        } catch (error) {
+            // Xử lý lỗi phân tích JSON, ghi log hoặc hiển thị thông báo lỗi
+            console.error('Error parsing highlight_items JSON:', error);
+        }
+    }
+
     return (
         <div className={cx('highlights')}>
             <h3>Đặc điểm nổi bật</h3>
-            <ul>
-                {highlights.map((item: string, index: number) => (
-                    <li key={index}>
-                        <FontAwesomeIcon icon={faCheckCircle} className={cx('icon')}/>
-                        {item}
-                    </li>
-                ))}
-            </ul>
+            {highlights.length > 0 ? (
+                <ul>
+                    {highlights.map((item, index) => (
+                        <li key={index}>
+                            <FontAwesomeIcon icon={faCheckCircle} className={cx('icon')}/>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>Không có thông tin đặc điểm nổi bật.</p>
+            )}
         </div>
     );
 };

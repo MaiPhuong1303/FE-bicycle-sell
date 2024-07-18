@@ -9,6 +9,7 @@ import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 import Instruct from '../pages/Instruct';
 import ProductDetails from "../pages/ProductDetails";
+import Search from "../components/layouts/components/Search/Search";
 
 //public routes
 const publicRoutes = [
@@ -23,7 +24,7 @@ const publicRoutes = [
     {path: '/collection/phu-kien', component: Collection},
     {path: '/collection', component: Collection},
     {path: '/products/:id', component: ProductDetails},
-    // { path: '/search/:keyword', component: Search },
+    {path: '/search/:keyword', component: Search},
     // { path: '/account', component: Account },
     // { path: '/myorders', component: Account },
     // { path: '/order/:id', component: Account },
