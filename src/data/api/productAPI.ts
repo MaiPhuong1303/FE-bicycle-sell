@@ -6,6 +6,7 @@ export interface ProductParams {
     _start?: number;
     _end?: number;
     _totalItems?: number;
+    name?: string;
 }
 
 const productApi = {
@@ -54,7 +55,7 @@ const productApi = {
             console.error('Lỗi khi đếm tổng sản phẩm:', error);
             throw error;
         }
-    }
+    },
 };
 
 export default productApi;
