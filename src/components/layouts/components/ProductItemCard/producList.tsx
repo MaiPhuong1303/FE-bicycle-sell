@@ -9,8 +9,8 @@ import styles from './ProductItemCard.module.scss';
 import Loader from '../Loader';
 import {Container} from '@mui/system';
 import {Grid, Pagination, Paper} from '@mui/material';
-import {FaShoppingCart} from 'react-icons/fa';
 import ProductFilters from './ProductFilters';
+import ProductItemCard from "./ProductItemCard";
 
 const cx = classNames.bind(styles);
 
@@ -110,25 +110,6 @@ function ProductList({categoryName}: { categoryName?: string }) {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, [currentPage]);
 
-    // Hàm xử lý khi thay đổi bộ lọc từ component Search
-    const handleFilterChange = async (newFilters: { searchTerm: string }) => {
-        try {
-            setLoading(true);
-            await delay(300);
-            const response = await productApi.getAll({...filters, name: newFilters.searchTerm});
-            const totalItems = filters.totalItems || response.totalItems;
-            setProducts(response.data);
-            setLoading(false);
-            setPagination({
-                ...pagination,
-                count: Math.ceil(totalItems / filters._limit),
-                totalItems,
-            });
-        } catch (error) {
-            console.error('Error searching products:', error);
-            setLoading(false);
-        }
-    };
 
     return (
         <Box>
@@ -146,47 +127,9 @@ function ProductList({categoryName}: { categoryName?: string }) {
                             ) : (
                                 <div className={cx('container')}>
                                     <div className={cx('row')}>
-                                        {products.length > 0 ? (
+                                        {products.length > 0 ? ( // Nếu có sản phẩm thì map và hiển thị từng ProductItemCard
                                             products.map(product => (
-                                                <div key={product.id} className={cx('col-md-3 mb-3')}>
-                                                    <div className={cx('card')}>
-                                                        <Link to={`/products/${product.id}`}>
-                                                            <img
-                                                                src={product.urlImage}
-                                                                className={cx('card-img-top')}
-                                                                alt={product.name}
-                                                            />
-                                                        </Link>
-                                                        <div className={cx('card-body')}>
-                                                            <Link to={`/products/${product.id}`}>
-                                                                <h5 className={cx('card-title', 'custom-link')}>
-                                                                    {product.name.toLowerCase().length > 25
-                                                                        ? product.name.toLowerCase().substring(0, 25) + '...'
-                                                                        : product.name.toLowerCase()}
-                                                                </h5>
-                                                            </Link>
-                                                            <p className={cx('card-text')}>
-                                                                <strong>
-                                                                    {new Intl.NumberFormat('vi-VN', {
-                                                                        style: 'currency',
-                                                                        currency: 'VND',
-                                                                    }).format(parseFloat(product.price))}
-                                                                </strong>
-                                                            </p>
-                                                            <div className={cx('d-flex', 'justify-content-between')}>
-                                                                <Link to={`/products/${product.id}`}>
-                                                                    <a href="#" className={cx('btn', 'btn-primary')}>
-                                                                        Xem chi tiết
-                                                                    </a>
-                                                                </Link>
-                                                                <button className={cx('btn', 'btn-secondary')}
-                                                                        title="Thêm vào giỏ hàng">
-                                                                    <FaShoppingCart/>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <ProductItemCard key={product.id} product={product}/>
                                             ))
                                         ) : (
                                             <div className={cx('no-products')}>Không có sản phẩm nào.</div>
