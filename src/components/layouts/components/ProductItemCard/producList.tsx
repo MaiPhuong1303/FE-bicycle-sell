@@ -11,6 +11,8 @@ import {Container} from '@mui/system';
 import {Grid, Pagination, Paper} from '@mui/material';
 import ProductFilters from './ProductFilters';
 
+
+
 import {useShoppingContext} from "../../../contexts/ShoppingContext";
 import ProductItemCard from "./ProductItemCard";
 
@@ -113,17 +115,6 @@ function ProductList({categoryName}: { categoryName?: string }) {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, [currentPage]);
 
-
-    // hàm xử lý addToCart
-    const addToCart = (product: Product) => {
-        addCartItem({
-            id: product.id,
-            name: product.name,
-            price: parseFloat(product.price),
-            qty: 1,
-            thumbnail: product.urlImage,
-        });
-    };
 
     return (
         <Box>

@@ -11,6 +11,8 @@ import Instruct from '../pages/Instruct';
 import ProductDetails from "../pages/ProductDetails";
 import Search from "../components/layouts/components/Search/Search";
 import SearchResults from "../components/layouts/components/Search/SearchResults";
+import Checkout from "../pages/Checkout/Checkout";
+import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
 
 //public routes
 const publicRoutes = [
@@ -26,6 +28,9 @@ const publicRoutes = [
     {path: '/collection', component: Collection},
     {path: '/products/:id', component: ProductDetails},
     {path: '/search/:keyword', component: SearchResults},
+    {path: '/checkout', component: Checkout},
+    {path: '/order-confirmation', component: OrderConfirmation},
+
     // { path: '/account', component: Account },
     // { path: '/myorders', component: Account },
     // { path: '/order/:id', component: Account },
