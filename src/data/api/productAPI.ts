@@ -6,7 +6,7 @@ export interface ProductParams {
     _start?: number;
     _end?: number;
     _totalItems?: number;
-    name?: string;
+    name_like?: string;
 }
 
 const productApi = {
@@ -18,6 +18,7 @@ const productApi = {
                 : (params._page - 1) * (params._limit || 50);
 
             delete newParams._page;
+            console.log('Params to be sent:', newParams); // Debugging line
             const productList = await axiosInstance.get('/products', {params: newParams});
             const fakeProducts = await axiosInstance.get('/products');
             const totalItems = fakeProducts.data.length;
