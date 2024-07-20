@@ -1,14 +1,26 @@
-// src/components/ProductItemCard/ProductItemCard.js
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames/bind';
 import {FaShoppingCart} from 'react-icons/fa';
 import styles from './ProductItemCard.module.scss';
 import {Product} from './product';
-
+import {useShoppingContext} from "../../../contexts/ShoppingContext";
 const cx = classNames.bind(styles);
 
 const ProductItemCard = ({product}: { product: Product }) => {
+    const { addCartItem } = useShoppingContext();
+//     // hàm xử lý addToCart
+    const addToCart = (product: Product) => {
+        addCartItem({
+            id: product.id,
+            name: product.name,
+            price: parseFloat(product.price),
+            qty: 1,
+            thumbnail: product.urlImage,
+        });
+    };
+
     return (
         <div className={cx('col-md-3 mb-3')}>
             <div className={cx('card')}>
@@ -41,9 +53,12 @@ const ProductItemCard = ({product}: { product: Product }) => {
                                 Xem chi tiết
                             </a>
                         </Link>
-                        <button className={cx('btn', 'btn-secondary')} title="Thêm vào giỏ hàng">
-                            <FaShoppingCart/>
-                        </button>
+                        <button
+                                                        className={cx('btn', 'btn-secondary')}
+                                                        title="Thêm vào giỏ hàng" onClick={() => addToCart(product)}
+                                                    >
+                                                        <FaShoppingCart/>
+                                                    </button>
                     </div>
                 </div>
             </div>
