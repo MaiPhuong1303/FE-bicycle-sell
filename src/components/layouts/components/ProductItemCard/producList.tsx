@@ -12,6 +12,8 @@ import {Grid, Pagination, Paper} from '@mui/material';
 import ProductFilters from './ProductFilters';
 
 
+
+import {useShoppingContext} from "../../../contexts/ShoppingContext";
 import ProductItemCard from "./ProductItemCard";
 
 const cx = classNames.bind(styles);
@@ -40,6 +42,8 @@ function ProductList({categoryName}: { categoryName?: string }) {
     const [currentPage, setCurrentPage] = useState(1);
     const location = useLocation();
 
+    const {addCartItem} = useShoppingContext(); // sử dụng context
+
     useEffect(() => {
         const categoryMap: { [key: string]: number } = {
             'xe-dap-the-thao': 1,
@@ -64,7 +68,6 @@ function ProductList({categoryName}: { categoryName?: string }) {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                await delay(300);
                 const response = await productApi.getAll(filters);
                 const totalItems = filters.totalItems || response.totalItems;
                 setProducts(response.data);

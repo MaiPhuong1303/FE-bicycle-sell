@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 import axiosInstance from '../../../../data/api/axios';
 import classNames from 'classnames/bind';
 import Box from '@mui/system/Box';
@@ -11,6 +11,7 @@ import {Product} from '../ProductItemCard/product';
 import ProductFilters from '../ProductItemCard/ProductFilters';
 import styles from './search.module.scss';
 import ProductList from "../ProductItemCard/producList";
+import {Filters} from "../Filters/filter";
 
 const cx = classNames.bind(styles);
 
@@ -18,15 +19,20 @@ const SearchResults = () => {
     const {keyword} = useParams<{ keyword: string }>();
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const [filters, setFilters] = useState({_page: 1, _limit: 12, name_like: keyword?.toLowerCase()});
+    const [filters, setFilters] = useState<Filters>({
+        _limit: 12,
+        _page: 1,
+        categoryName: '',
+        name_like: keyword?.toLowerCase()
+    });
     const [showAllProducts, setShowAllProducts] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         if (!keyword) {
             setLoading(false);
             return;
         }
-        // /product?Name_like=${search}
         axiosInstance.get('/products', {
             params: {
                 name_like: keyword,
@@ -42,12 +48,13 @@ const SearchResults = () => {
             });
     }, [keyword]);
 
-    const handleFiltersChange = (newFilters: any) => {
-        setFilters({
+    const handleFiltersChange = (newFilters: Filters) => {
+        setFilters(prevFilters => ({
+            ...prevFilters,
             ...newFilters,
             _page: 1,
             name_like: keyword,
-        });
+        }));
     };
 
     useEffect(() => {
@@ -76,7 +83,7 @@ const SearchResults = () => {
                                 <div className={cx('container')}>
                                     <div className={cx('row')}>
                                         {showAllProducts ? (
-                                            <ProductList categoryName={undefined}/> // Hiển thị tất cả sản phẩm
+                                            <ProductList categoryName={filters.categoryName}/> // Hiển thị tất cả sản phẩm
                                         ) : (
                                             <>
                                                 {products.length === 0 ? (
