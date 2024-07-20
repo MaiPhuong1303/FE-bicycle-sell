@@ -1,9 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultLayout from './components/layouts/DefaultLayout';
 import {publicRoutes} from './routes';
 import {ShoppingContextProvider} from "./components/contexts/ShoppingContext";
 import Checkout from "./pages/Checkout/Checkout";
+import Collection from "./pages/Collection/Collection"; // Import trang Collection
+import OrderConfirmation from "./pages/OrderConfirmation/OrderConfirmation"; // Import trang xác nhận đơn hàng
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
