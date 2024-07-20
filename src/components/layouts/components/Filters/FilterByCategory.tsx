@@ -7,6 +7,7 @@ import styles from './FilterByCategory.module.scss';
 import {useNavigate} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 interface FilterByCategoryProps {
     onChange?: (newCategoryId: number) => Promise<void>;
