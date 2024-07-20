@@ -35,7 +35,9 @@
     "slick-carousel": "^1.8.1",
     "style-loader": "^4.0.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "js-cookie": "^3.0.5",
+    "json-server": "github:notPlancha/json-server#v0"
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
@@ -61,6 +63,8 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "file-loader": "^6.2.0",
+    "sneaks-api": "^1.2.3"
   }
 }
