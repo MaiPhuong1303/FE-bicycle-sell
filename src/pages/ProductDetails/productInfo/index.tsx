@@ -6,6 +6,7 @@ import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import classNames from 'classnames/bind';
 import styles from './productInfor.module.scss';
+import { useShoppingContext} from "../../../components/contexts/ShoppingContext";
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +15,25 @@ interface ProductInfoProps {
 }
 
 const ProductInfo: React.FC<ProductInfoProps> = ({product}) => {
+
+    // sử dụng hook để lấy hàm addCartItem
+    const { addCartItem } = useShoppingContext();
+    // hàm xử lý thêm sản phẩm vào giỏ hàng
+    const handleAddToCart = () => {
+        if (addCartItem) {  // Kiểm tra xem hàm có tồn tại không
+            const productItem = {
+                id: product.id,
+                name: product.name,
+                price: parseFloat(product.price), // Chuyển đổi giá từ string sang số
+                qty: 1, // Giá trị mặc định cho số lượng
+                thumbnail: product.urlImage // Sử dụng ảnh đại diện sản phẩm
+            };
+            addCartItem(productItem);
+        } else {
+            console.error('addCartItem is not defined');
+        }
+    };
+
     // Chuyển đổi chuỗi JSON thành mảng
     const colors = JSON.parse(product.color.replace(/'/g, '"'));
     return (
@@ -45,7 +65,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({product}) => {
                         ))}
                     </div>
                 </h3>
-                <button className={cx('add-to-cart-button')}>Thêm vào giỏ hàng</button>
+                <button className={cx('add-to-cart-button')}onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
 
 
             </Box>

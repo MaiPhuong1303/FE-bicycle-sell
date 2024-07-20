@@ -11,6 +11,7 @@ import {Container} from '@mui/system';
 import {Grid, Pagination, Paper} from '@mui/material';
 import {FaShoppingCart} from 'react-icons/fa';
 import ProductFilters from './ProductFilters';
+import{ useShoppingContext} from "../../../contexts/ShoppingContext";
 
 const cx = classNames.bind(styles);
 
@@ -37,6 +38,8 @@ function ProductList({categoryName}: { categoryName?: string }) {
     const [filters, setFilters] = useState<Filters>({_page: 1, _limit: 12, categoryName});
     const [currentPage, setCurrentPage] = useState(1);
     const location = useLocation();
+
+    const { addCartItem } = useShoppingContext(); // sử dụng context
 
     useEffect(() => {
         const categoryMap: { [key: string]: number } = {
@@ -130,6 +133,17 @@ function ProductList({categoryName}: { categoryName?: string }) {
         }
     };
 
+    // hàm xử lý addToCart
+    const addToCart = (product: Product) => {
+        addCartItem({
+            id: product.id,
+            name: product.name,
+            price: parseFloat(product.price),
+            qty: 1,
+            thumbnail: product.urlImage,
+        });
+    };
+
     return (
         <Box>
             <Container>
@@ -179,8 +193,11 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                                                         Xem chi tiết
                                                                     </a>
                                                                 </Link>
-                                                                <button className={cx('btn', 'btn-secondary')}
-                                                                        title="Thêm vào giỏ hàng">
+                                                                <button
+                                                                    className={cx('btn', 'btn-secondary')}
+                                                                    title="Thêm vào giỏ hàng"
+                                                                    onClick={() => addToCart(product)}
+                                                                >
                                                                     <FaShoppingCart/>
                                                                 </button>
                                                             </div>
