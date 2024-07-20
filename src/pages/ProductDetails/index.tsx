@@ -10,37 +10,44 @@ import ProductInfo from "./productInfo";
 import ProductThumbnail from "./productThumbnail";
 import HightLightItem from "./productThumbnail/hightLightItem";
 import ProductDescription from "./productInfo/productDescription";
+import Loader from "../../components/layouts/components/Loader";
+import RelatedProducts from "./RelatedProducts";  // Import component mới
 
 
 const cx = classNames.bind(styles);
 const ProductDetails = () => {
-    const {id} = useParams()
-    const [product, setProduct] = useState()
+    const {keyword} = useParams<{ keyword: string }>();
+    const {id} = useParams();
+    const [loading, setLoading] = useState(true);
+    const [product, setProduct] = useState();
+
     useEffect(() => {
+        setLoading(true);
         axiosInstance.get(`/products/${id}`)
-            .then(res => setProduct(res.data))
-    }, [id])
+            .then(res => {
+                setProduct(res.data);
+                setLoading(false);
+            })
+            .catch(() => setLoading(false));
+    }, [id]);
+
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }, [id]);
 
     return (
-
         <Box>
             <Container className={cx('container')}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={3} className={cx('left')}>
-                        <Paper elevation={3}>Left</Paper>
-                    </Grid>
-
-                    <Grid item xs={12} md={9} className={cx('right')}>
-                        <Paper elevation={3}>
-                            <Container>
-
-
+                <Grid item xs={12} md={9}>
+                    <Paper elevation={3}>
+                        <Container>
+                            {loading ? (
+                                <Loader/>
+                            ) : (
                                 <Grid container spacing={3}>
-
                                     <Grid item xs={12} md={5.5} className={cx('thumbnail')}>
                                         <Paper elevation={3}>
                                             {product && <ProductThumbnail product={product}/>}
-
                                         </Paper>
                                         {product && <ProductDescription product={product}/>}
                                     </Grid>
@@ -49,11 +56,10 @@ const ProductDetails = () => {
                                         {product && <HightLightItem product={product}/>}
                                     </Grid>
                                 </Grid>
-
-
-                            </Container>
-                        </Paper>
-                    </Grid>
+                            )}
+                        </Container>
+                    </Paper>
+                    {product && <RelatedProducts categories_id={product["categories_id"]}/>} {/* Thêm mục này */}
                 </Grid>
             </Container>
         </Box>
@@ -61,6 +67,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-
-
-
