@@ -1,0 +1,91 @@
+.authentic {
+  display: flex;
+  align-items: center;
+  color: #2e96ee;
+  font-weight: bold;
+  font-size: small;
+
+  .icon {
+    margin-right: 5px
+  }
+
+  .brand {
+    margin-left: 10%;
+    font-weight: initial;
+  }
+}
+
+h2 {
+  font-size: larger;
+  margin-top: 2%;
+}
+
+
+h3 {
+  font-size: medium;
+
+  .colors-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}
+
+
+.card-text {
+  color: red;
+  font-size: x-large;
+
+  .currency {
+    position: relative;
+    top: -0.5em;
+    font-size: smaller;
+  }
+
+}
+
+.color-button {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #f5f5f5, #e0e0e0);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: linear-gradient(145deg, #e0e0e0, #f5f5f5);
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #2e96ee;
+  }
+}
+
+.add-to-cart-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2e96ee;
+  color: #fff;
+  font-size: medium;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  margin-top: 20px;
+  width: 100%;
+
+  &:hover {
+    background-color: #256fb2;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #256fb2;
+  }
+}

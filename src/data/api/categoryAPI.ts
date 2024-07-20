@@ -16,7 +16,7 @@ interface CategoryAPI {
     remove(id: number): Promise<any>; // Thêm phương thức remove để xóa một danh mục sản phẩm dựa trên id
 }
 
-// Đối tượng categoryAPI với các phương thức tương ứng
+
 const categoryAPI: CategoryAPI = {
     getAll(params) {
         const url = '/categories';

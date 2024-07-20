@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 interface Filters {
     _page: number;
     _limit: number;
-    categories_id?: number; // Sửa thành categories_id
+    categories_id?: number;
     totalItems?: number;
 }
 
@@ -42,7 +42,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({filters, onChange}) => {
             setTotalProductsByCategory(totalByCategory);
             const newFilters = {
                 ...filters,
-                categories_id: newCategoryId, // Sửa thành categories_id
+                categories_id: newCategoryId,
                 _page: 1,
                 totalItems: totalByCategory
             };
