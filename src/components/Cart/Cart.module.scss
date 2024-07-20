@@ -1,3 +1,6 @@
+
+@import "~bootstrap/scss/bootstrap";
+
 .container {
     width: var(--content-pc-width);
     margin: auto;
@@ -119,6 +122,9 @@
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 10px;
+            white-space: nowrap; // ngăn tên bị xuống dòng
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .size {
@@ -163,7 +169,6 @@
     .calc {
         display: flex;
         font-weight: 600;
-
         align-items: center;
         width: 12%;
         justify-content: center;
@@ -252,4 +257,22 @@
     svg {
         font-size: 24px; // Kích thước icon ở đây, có thể điều chỉnh theo nhu cầu của bạn
     }
+}
+.dropdown-menu{
+    display:block;
+    max-width: 300px; // Kích thước tối đa của dropdown menu
+    overflow: hidden; // Ẩn phần tử thừa
+    white-space: nowrap; // Ngăn xuống dòng
+    text-overflow: ellipsis; // Thêm ba chấm nếu nội dung quá dài
+}
+.dropdown-menu .item-name{
+    white-space: nowrap; // ngăn dòng chữ bị xuống dòng
+    overflow: hidden; // ẩn phần chữ thừa
+    text-overflow: ellipsis; // thêm ba chấm ở cuối nếu tên quá dài
+}
+.table td{
+    max-width: 200px; // Giới hạn chiều rộng của cột
+    overflow: hidden; // Ẩn phần tử thừa
+    text-overflow: ellipsis; // Thêm ba chấm nếu tên quá dài
+    white-space: nowrap; // Ngăn xuống dòng
 }

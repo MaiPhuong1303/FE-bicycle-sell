@@ -10,6 +10,8 @@ import Loader from '../Loader';
 import {Container} from '@mui/system';
 import {Grid, Pagination, Paper} from '@mui/material';
 import ProductFilters from './ProductFilters';
+
+import{ useShoppingContext} from "../../../contexts/ShoppingContext";
 import ProductItemCard from "./ProductItemCard";
 
 const cx = classNames.bind(styles);
@@ -37,6 +39,8 @@ function ProductList({categoryName}: { categoryName?: string }) {
     const [filters, setFilters] = useState<Filters>({_page: 1, _limit: 12, categoryName});
     const [currentPage, setCurrentPage] = useState(1);
     const location = useLocation();
+
+    const { addCartItem } = useShoppingContext(); // sử dụng context
 
     useEffect(() => {
         const categoryMap: { [key: string]: number } = {
@@ -111,6 +115,17 @@ function ProductList({categoryName}: { categoryName?: string }) {
     }, [currentPage]);
 
 
+    // hàm xử lý addToCart
+    const addToCart = (product: Product) => {
+        addCartItem({
+            id: product.id,
+            name: product.name,
+            price: parseFloat(product.price),
+            qty: 1,
+            thumbnail: product.urlImage,
+        });
+    };
+
     return (
         <Box>
             <Container>
@@ -129,7 +144,9 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                     <div className={cx('row')}>
                                         {products.length > 0 ? ( // Nếu có sản phẩm thì map và hiển thị từng ProductItemCard
                                             products.map(product => (
+
                                                 <ProductItemCard key={product.id} product={product}/>
+
                                             ))
                                         ) : (
                                             <div className={cx('no-products')}>Không có sản phẩm nào.</div>

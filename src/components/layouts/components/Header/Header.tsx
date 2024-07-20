@@ -4,6 +4,7 @@ import MiddleHeader from "./MiddleHeader/middleHeader";
 import NavBar from "./NavBar/navbar";
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
+import {useShoppingContext} from "../../../contexts/ShoppingContext";
 
 const cx = classNames.bind(styles);
 
