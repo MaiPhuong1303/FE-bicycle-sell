@@ -1,34 +1,33 @@
 import classNames from 'classnames/bind';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import images from '../../../../../images/images';
 import Login from '../../Login/login';
 import Search from '../../Search/Search';
 import styles from './MiddleHeader.module.scss';
+
 import axiosInstance from '../../../../../data/api/axios';
 import cart from "../../../../Cart/cart";
 import CartItem from "../../../../Cart/CartItem";
 import { useShoppingContext } from '../../../../contexts/ShoppingContext';
 import { formatCurrency } from '../../../../helpers/common';
 
+
 const cx = classNames.bind(styles);
 
 const MiddleHeader = () => {
+
     const { cartItems = [], cartQty = 0, totalPrice = 0, increaseQty, decreaseQty, removeCartItem } = useShoppingContext();
 
+    const navigate = useNavigate();
+
     const handleFilterChange = (newFilters: { searchTerm: string }) => {
-        axiosInstance.get('/products', {
-            params: {
-                name: newFilters.searchTerm,
-            },
-        })
-            .then(response => {
-                console.log('Filtered products: ', response.data);
-                // Bây giờ chúng ta cần đưa sản phẩm đã lọc vào một trang khác
-            })
-            .catch(error => {
-                console.error('Error searching products: ', error);
-            });
+        if (newFilters.searchTerm.trim() === '') {
+            // Nếu searchTerm rỗng, không thực hiện điều hướng
+            return;
+        } else {
+            navigate(`/search/${newFilters.searchTerm}`);
+        }
     };
 
     return (
@@ -50,7 +49,9 @@ const MiddleHeader = () => {
                     </div>
                 </div>
                 <div className={cx('search')}>
+
                     <Search onSubmit={handleFilterChange} />
+
                 </div>
                 <div className={cx('action')}>
                     <div>
