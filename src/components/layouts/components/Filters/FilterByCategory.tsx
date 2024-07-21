@@ -5,6 +5,7 @@ import categoryAPI, {Category} from '../../../../data/api/categoryAPI';
 import classNames from 'classnames/bind';
 import styles from './FilterByCategory.module.scss';
 import {useNavigate} from 'react-router-dom';
+import {useDarkMode} from "../darkMode/DarkModeContext";
 
 const cx = classNames.bind(styles);
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -17,7 +18,7 @@ const FilterByCategory: React.FC<FilterByCategoryProps> = ({onChange}) => {
     const [categoryList, setCategoryList] = useState<Category[]>([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
     const navigate = useNavigate();
-
+    const {isDarkMode} = useDarkMode(); // Lấy trạng thái dark mode
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -64,10 +65,11 @@ const FilterByCategory: React.FC<FilterByCategoryProps> = ({onChange}) => {
 
     return (
         <Box className={cx('root')}>
-            <Typography variant="subtitle2" className={cx('title')}>
+            <Typography variant="subtitle2"
+                        className={cx('title', {'dark': isDarkMode, 'light': !isDarkMode})}>
                 DANH MỤC SẢN PHẨM
             </Typography>
-            <ul className={cx('menu')}>
+            <ul className={cx('menu', {'dark-mode': isDarkMode, 'light-mode': !isDarkMode})}>
                 {categoryList.length > 0 ? (
                     categoryList.map((category) => (
                         <li
@@ -75,10 +77,12 @@ const FilterByCategory: React.FC<FilterByCategoryProps> = ({onChange}) => {
                             className={cx('menuItem', {active: category.id === selectedCategoryId})}
                             onClick={() => handleCategoryClick(category)}
                         >
-                            <span className={cx('box')}>
-                                <span className={cx('tick')}>&#10003;</span>
+                            <span className={cx('box', {'darkt': isDarkMode, 'lightt': !isDarkMode})}>
+                                <span
+                                    className={cx('tick')}>&#10003;</span>
                             </span>
-                            <Typography variant="body2" className={cx('name')}>
+                            <Typography variant="body2"
+                                        className={cx('name', {'dark': isDarkMode, 'light': !isDarkMode})}>
                                 {category.name}
                             </Typography>
                         </li>

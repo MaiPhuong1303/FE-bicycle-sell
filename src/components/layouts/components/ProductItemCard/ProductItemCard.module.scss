@@ -16,7 +16,7 @@
 .pagination-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Điều chỉnh khoảng cách trên/dưới nếu cần */
+  padding-top: 20px; /* Điều chỉnh khoảng cách trên/dưới nếu cần */
   padding-bottom: 20px;
 }
 
@@ -74,3 +74,14 @@ a {
   text-decoration: none !important;
 }
 
+/* Các kiểu CSS hiện tại */
+
+.dark-mode {
+  background: linear-gradient(to right, #051018, #2177b4, #051018);
+  color: #fff;
+}
+
+.light-mode {
+  background-color: #fff; /* Màu sáng cho chế độ sáng */
+  color: #000;
+}

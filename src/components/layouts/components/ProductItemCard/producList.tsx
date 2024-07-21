@@ -13,6 +13,7 @@ import ProductFilters from './ProductFilters';
 
 import {useShoppingContext} from "../../../contexts/ShoppingContext";
 import ProductItemCard from "./ProductItemCard";
+import {useDarkMode} from "../darkMode/DarkModeContext";
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +42,7 @@ function ProductList({categoryName}: { categoryName?: string }) {
     const location = useLocation();
 
     const {addCartItem} = useShoppingContext(); // sử dụng context
-
+    const {isDarkMode} = useDarkMode(); // Lấy trạng thái dark mode
     useEffect(() => {
         const categoryMap: { [key: string]: number } = {
             'xe-dap-the-thao': 1,
@@ -114,23 +115,14 @@ function ProductList({categoryName}: { categoryName?: string }) {
     }, [currentPage]);
 
 
-    // hàm xử lý addToCart
-    const addToCart = (product: Product) => {
-        addCartItem({
-            id: product.id,
-            name: product.name,
-            price: parseFloat(product.price),
-            qty: 1,
-            thumbnail: product.urlImage,
-        });
-    };
-
     return (
         <Box>
+
             <Container>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={3} className={cx('left')}>
-                        <Paper elevation={3}>
+                        <Paper elevation={3}
+                               className={cx('left-item', {'dark-mode': isDarkMode, 'light-mode': !isDarkMode})}>
                             <ProductFilters filters={filters} onChange={handleFiltersChange}/>
                         </Paper>
                     </Grid>
@@ -139,7 +131,7 @@ function ProductList({categoryName}: { categoryName?: string }) {
                             {loading ? (
                                 <Loader/>
                             ) : (
-                                <div className={cx('container')}>
+                                <div className={cx('container', {'dark-mode': isDarkMode, 'light-mode': !isDarkMode})}>
                                     <div className={cx('row')}>
                                         {products.length > 0 ? ( // Nếu có sản phẩm thì map và hiển thị từng ProductItemCard
                                             products.map(product => (
@@ -153,7 +145,10 @@ function ProductList({categoryName}: { categoryName?: string }) {
                                     </div>
                                 </div>
                             )}
-                            <div className={cx('pagination-container')}>
+                            <div className={cx('pagination-container', {
+                                'dark-mode': isDarkMode,
+                                'light-mode': !isDarkMode
+                            })}>
                                 <Pagination
                                     count={Math.ceil(pagination.totalItems / pagination.limit)}
                                     page={pagination.page}
