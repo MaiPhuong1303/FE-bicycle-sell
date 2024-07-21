@@ -1,24 +1,41 @@
-import React, {memo} from 'react';
-
-
+import React, { memo } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Footer.module.scss';
+import { Link } from "react-router-dom";
+import images from "../../../../images/images";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 const cx = classNames.bind(styles);
+
 const Footer = () => {
     return (
-
         <footer className={cx('footer')}>
             <div className={cx('footer-container')}>
                 <div className={cx('footer-column')}>
-                    <h4>Giới thiệu</h4>
-                    <p>Cửa hàng Bycicle</p>
+                    <h4>Cửa hàng Bycicle</h4>
+                    <a>
+                        <Link to="/">
+                            <img src={images.logo} alt="" />
+                        </Link>
+                    </a>
                 </div>
                 <div className={cx('footer-column')}>
                     <h4>Liên hệ</h4>
                     <ul>
-                        <li>Email: info@company.com</li>
-                        <li>Điện thoại: -------</li>
-                        <li>Địa chỉ:---------M</li>
+                        <li>
+                            <FontAwesomeIcon icon={faEnvelope} /> Email: 21130211@st.hcmuaf.edu.vn
+                        </li>
+
+
+                        <li>
+                            <FontAwesomeIcon icon={faPhone} /> Điện thoại: 0877.287.869
+                        </li>
+
+
+                        <li>
+                            <FontAwesomeIcon icon={faMapMarkerAlt} /> Địa chỉ: Khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam
+                        </li>
                     </ul>
                 </div>
                 <div className={cx('footer-column')}>
@@ -31,12 +48,8 @@ const Footer = () => {
                 </div>
                 <div className={cx('cleat')}></div>
             </div>
-            <div className={cx('footer-bottom')}>
-                <p>&copy; 2024 Công ty của bạn. Tất cả các quyền được bảo lưu.</p>
-            </div>
         </footer>
-
     );
 };
 
-export default Footer;
+export default memo(Footer);
