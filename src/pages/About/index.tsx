@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './About.module.scss';
 import { Link } from 'react-router-dom';
 import aboutImages from '../../images/aboutImages';
-import SideBox from '../../components/SideBox';
+import SideBox from '../../components/layouts/components/SideBox';
 import SideBar from '../../components/layouts/components/SideBar';
 
 const cx = classNames.bind(styles);

@@ -1,45 +1,100 @@
 
 .navbar-wrapper {
-    background-color: rgba(145, 152, 166, 0.25);
-    //background-color: var(--yellow-color);
-    //color: var(--background-color);
+  background-color: rgba(145, 152, 166, 0.25);
+  //background-color: var(--yellow-color);
+  //color: var(--background-color);
 }
 
 .logo {
-    display: none;
-    max-width: 200px;
-    img {
-        height: 50px;
-    }
+  display: none;
+  max-width: 200px;
+
+  img {
+    height: 50px;
+  }
 }
 
 .navbar-sticky {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
-    animation: fadeIn 0.3s ease-in-out;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
 
-    .navbar-wrapper {
-        display: flex;
-        top: 0;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-    }
-    .logo {
-        display: none;
-    }
+  .navbar-wrapper {
+    display: flex;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .logo {
+    display: none;
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        top: -60px;
+  0% {
+    opacity: 0;
+    top: -60px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+    transition: all;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: content-box; /* Sử dụng content-box thay vì border-box */
+}
+
+.light-mode {
+
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.dark-mode {
+  color: #d2d1cf;
+  margin-left: auto;
+}
+
+.toggle-switch {
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  .switch {
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s ease;
+    /* Vị trí của nút chuyển đổi */
+    .switch-light {
+      left: 1px;
     }
-    100% {
-        opacity: 1;
-        top: 0;
-        transition: all;
+
+    .switch-dark {
+      left: 31px;
     }
+  }
+}
+
+.toggle {
+  margin-right: -92%;
+  position: absolute;
+  cursor: pointer;
 }

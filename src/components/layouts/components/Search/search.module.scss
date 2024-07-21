@@ -1,0 +1,66 @@
+:root {
+  --search-color: #946722;
+}
+
+.search {
+  display: flex;
+  border-radius: var(--search-border-radius);
+  // overflow: hidden;
+  position: relative;
+  max-width: 700px;
+  flex: 1;
+  margin-top: 1%;
+  margin-bottom: 1%;
+
+  input {
+    font-size: 1.2rem; /* Giảm kích thước font chữ */
+    padding: 8px 50px 8px 80px; /* Điều chỉnh padding để thu nhỏ thanh tìm kiếm */
+    border: 1.5px solid var(--search-color);
+    color: var(--text-color);
+    border-radius: var(--search-border-radius);
+    width: 100%;
+  }
+
+  input:focus-visible {
+    //outline: none;
+    //border-color: var(--yellow-color);
+    border: 2px solid var(--search-color); /* Đặt độ rộng và màu sắc của khung khi input nhận focus */
+    outline: none;
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    color: var(--search-color);
+
+    input {
+      padding-left: 40px; /* Thay đổi khoảng cách giữa biểu tượng và nội dung input */
+    }
+
+    input::placeholder {
+      opacity: 0.4;
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 10px; /* Thay đổi vị trí của biểu tượng tìm kiếm */
+      transform: translateY(-50%);
+      color: var(--search-color);
+      font-size: 1rem; /* Giảm kích thước của biểu tượng */
+    }
+
+  }
+
+}
+
+.search-title {
+
+  font-size: 1.2em; // Adjust the size as needed
+  text-align: center;
+  background: linear-gradient(to right, #e0f5f0, #eaccf8, #e0f5f0);
+  margin-top: 1%;
+  margin-bottom: 1%;
+}

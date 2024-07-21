@@ -1,0 +1,90 @@
+
+.root {
+  padding: 16px;
+
+  .title {
+    font-weight: 700;
+    font-size: 20px;
+  }
+}
+
+.menu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  background: linear-gradient(to right, #e0f5f0, #eaccf8, #b2a8fd);
+
+  > li {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.3s ease;
+
+    .box {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      border: 1px solid #000; /* Viền màu đen của ô vuông rỗng */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .tick {
+      display: none; /* Ẩn dấu tick ban đầu */
+      font-size: 14px; /* Kích thước của dấu tick */
+      color: var(--background-color); /* Màu của dấu tick */
+      font-weight: 700;
+    }
+
+    &:hover {
+      background-color: #f0f0f0; /* Màu nền khi hover */
+    }
+
+    &.active {
+      color: var(--yellow-color); /* Màu khi active */
+
+      .tick {
+        display: inline-block; /* Hiển thị dấu tick khi active */
+      }
+    }
+  }
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.dark-mode {
+  background: linear-gradient(to bottom right, #4c4f50, #0f3550, #4c4f50);
+  color: #fff;
+}
+
+.light {
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.dark {
+  color: #d2d1cf;
+}
+
+.lightt {
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.darkt {
+  background-color: white;
+  color: #fff;
+}

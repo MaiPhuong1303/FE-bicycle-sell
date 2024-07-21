@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import classNames from 'classnames/bind';
-import { FaEnvelope, FaLocationArrow, FaPhone } from 'react-icons/fa';
+import {FaEnvelope, FaLocationArrow, FaPhone} from 'react-icons/fa';
 // import Breadcrumb from '~/components/Breadcrumb';
 // import Button from '~/components/Button';
 import styles from './contact.module.scss';
@@ -10,6 +10,7 @@ import styles from './contact.module.scss';
 // import { clearErrors } from '~/reducers/messageReducers';
 
 const cx = classNames.bind(styles);
+
 function Contact() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +23,7 @@ function Contact() {
     // const dispatch = useDispatch();
 
     const handleSubmit = () => {
-        const senderInfo = { name, email, phoneNo };
+        const senderInfo = {name, email, phoneNo};
         try {
             // dispatch(newMessage(senderInfo, title, content));
             clearForm();
@@ -42,116 +43,116 @@ function Contact() {
     // if (loading) {
     //     return <Loader />;
     // } else {
-        return (
-            <>
-                {/*<Breadcrumb cases={{ title: 'Liên hệ' }} />*/}
-                <div className={cx('container')}>
-                    <div className={cx('location')}></div>
-                    <div className={cx('content')}>
-                        <div className={cx('info')}>
-                            <h2 className={cx('heading')}>Thông tin liên hệ</h2>
-                            <ul className={cx('contact-list')}>
-                                <li>
+    return (
+        <>
+            {/*<Breadcrumb cases={{ title: 'Liên hệ' }} />*/}
+            <div className={cx('container')}>
+                <div className={cx('location')}></div>
+                <div className={cx('content')}>
+                    <div className={cx('info')}>
+                        <h2 className={cx('heading')}>Thông tin liên hệ</h2>
+                        <ul className={cx('contact-list')}>
+                            <li>
                                     <span className={cx('icon')}>
-                                        <FaLocationArrow />
+                                        <FaLocationArrow/>
                                     </span>
-                                    <span className={cx('description')}>
+                                <span className={cx('description')}>
                                         <p className={cx('title')}>Địa chỉ</p>
-                                        <p>Số 2, đường 17, phường Linh Trung, Quận Thủ Đức, TP.HCM</p>
+                                        <p>Khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
                                     </span>
-                                </li>
-                                <li>
+                            </li>
+                            <li>
                                     <span className={cx('icon')}>
-                                        <FaEnvelope />
+                                        <FaEnvelope/>
                                     </span>
-                                    <span className={cx('description')}>
+                                <span className={cx('description')}>
                                         <p className={cx('title')}>Email</p>
-                                        <p>footbalshop123@gmail.com</p>
+                                        <p>cchanh375@gmail.com</p>
                                     </span>
-                                </li>
-                                <li>
-                                    <span className={cx('icon')}>
-                                        <FaPhone />
+                            </li>
+                            <li>
+<span className={cx('icon')}>
+                                        <FaPhone/>
                                     </span>
-                                    <span className={cx('description')}>
+                                <span className={cx('description')}>
                                         <p className={cx('title')}>Điện thoại</p>
-                                        <p>0342.560.042</p>
+                                        <p>0877.287.869</p>
                                     </span>
-                                </li>
-                                <li>
+                            </li>
+                            <li>
                                     <span className={cx('icon')}>
-                                        <FaEnvelope />
+                                        <FaEnvelope/>
                                     </span>
-                                    <span className={cx('description')}>
+                                <span className={cx('description')}>
                                         <p className={cx('title')}>Thời gian làm việc</p>
                                         <p>
-                                            Thứ 2 đến Thứ 6 từ 8h đến 18h; <br />
+                                            Thứ 2 đến Thứ 6 từ 8h00 đến 18h00 <br/>
                                             Thứ 7 và Chủ nhật từ 8h00 đến 17h00
                                         </p>
                                     </span>
-                                </li>
-                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={cx('form')}>
+                        <h2 className={cx('heading')}>Gửi thắc mắc cho chúng tôi</h2>
+                        <p className={cx('legend')}>Đừng ngại để lại tin nhắn để Shop hỗ trợ bạn nhanh hơn nhé!</p>
+                        {/*{success ? (*/}
+                        <div className={cx('anounce')}>
+                            <p>
+                                Cám ơn bạn đã liên hệ, chúng tôi sẽ trả lời trực tiếp thông qua email và số điện
+                                thoại bạn để lại ngay khi có thể
+                            </p>
                         </div>
-                        <div className={cx('form')}>
-                            <h2 className={cx('heading')}>Gửi thắc mắc cho chúng tôi</h2>
-                            <p className={cx('legend')}>Đừng ngại để lại tin nhắn để Shop hỗ trợ bạn nhanh hơn nhé!</p>
-                            {/*{success ? (*/}
-                                <div className={cx('anounce')}>
-                                    <p>
-                                        Cám ơn bạn đã liên hệ, Chúng tôi sẽ trả lời trực tiếp thông qua email và số điện
-                                        thoại bạn để lại ngay khi có thể
-                                    </p>
-                                </div>
-                            {/*) : null}*/}
-                            <form action="#" className={cx('form-input')}>
-                                <input
-                                    type="text"
-                                    placeholder="Tên của bạn"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                                <input
-                                    type="email"
-                                    placeholder="Email của bạn"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                                <input
-                                    type="text"
-                                    placeholder="Số điện thoại của bạn"
-                                    value={phoneNo}
-                                    onChange={(e) => setPhoneNo(e.target.value)}
-                                    required
-                                />
-                                <input
-                                    type="text"
-                                    placeholder="Tiêu đề nội dung"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                    required
-                                />
-                                <textarea
-                                    placeholder="Nội dung"
-                                    value={content}
-                                    onChange={(e) => setContent(e.target.value)}
-                                    required
-                                />
-                                <p className={cx('caption')}>
-                                    This site is protected by reCAPTCHA and the Google{' '}
-                                    <a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
-                                    <a href="https://policies.google.com/terms">&nbsp;Terms of Service&nbsp;</a> apply.
-                                </p>
-                                <div className={cx('submit-btn')} onClick={handleSubmit}>
-                                    <input type="submit" value="GỬI CHO CHÚNG TÔI" />
-                                </div>
-                            </form>
-                        </div>
+                        {/*) : null}*/}
+                        <form action="#" className={cx('form-input')}>
+                            <input
+                                type="text"
+                                placeholder="Tên của bạn"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                            <input
+                                type="email"
+                                placeholder="Email của bạn"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <input
+                                type="text"
+                                placeholder="Số điện thoại của bạn"
+                                value={phoneNo}
+                                onChange={(e) => setPhoneNo(e.target.value)}
+                                required
+                            />
+                            <input
+                                type="text"
+                                placeholder="Tiêu đề nội dung"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                required
+                            />
+                            <textarea
+                                placeholder="Nội dung"
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
+                                required
+                            />
+                            <p className={cx('caption')}>
+                                This site is protected by reCAPTCHA and the Google{' '}
+                                <a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
+                                <a href="https://policies.google.com/terms">&nbsp;Terms of Service&nbsp;</a> apply.
+                            </p>
+                            <div className={cx('submit-btn')} onClick={handleSubmit}>
+                                <input type="submit" value="GỬI CHO CHÚNG TÔI"/>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </>
-        );
+            </div>
+        </>
+    );
     // }
 }
 
