@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useShoppingContext } from "../../components/contexts/ShoppingContext";
 import { formatCurrency } from "../../components/helpers/common";
-import styles from './Checkout.module.scss'; // Nhập tệp SCSS
-import { toast } from 'react-toastify'; // Thêm import toast
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS cho react-toastify
+import styles from './Checkout.module.scss';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MAX_NAME_LENGTH = 20; // Độ dài tối đa trước khi hiển thị "Xem thêm"
 
@@ -18,6 +18,8 @@ const Checkout = () => {
     };
 
     const handleOrder = () => {
+        // Lưu giỏ hàng vào localStorage
+        localStorage.setItem('order', JSON.stringify(cartItems));
         clearCart(); // Xóa giỏ hàng
         toast.success("Đặt hàng thành công!", {
             autoClose: 3000,
@@ -27,8 +29,8 @@ const Checkout = () => {
 
     return (
         <div className={styles.checkout}>
-            <aside className={`${styles.sidebar} ${styles.sidebarLeft}`}>
-            </aside>
+            <ToastContainer /> {/* Thêm ToastContainer */}
+            <aside className={`${styles.sidebar} ${styles.sidebarLeft}`}></aside>
             <div className={styles.contain}>
                 <table className={`table table-hover ${styles.table}`}>
                     <thead>
@@ -48,16 +50,16 @@ const Checkout = () => {
                                 <img src={item.thumbnail} className='img-fluid rounded' alt={item.name} />
                             </td>
                             <td className={styles.itemContainer} style={{ maxWidth: expandedNames[item.id] ? 'none' : '250px' }}>
-                                <span className={styles.itemName}>
-                                    {expandedNames[item.id] ? item.name : `${item.name.slice(0, MAX_NAME_LENGTH)}...`}
-                                </span>
+                                    <span className={styles.itemName}>
+                                        {expandedNames[item.id] ? item.name : `${item.name.slice(0, MAX_NAME_LENGTH)}...`}
+                                    </span>
                                 {item.name.length > MAX_NAME_LENGTH && (
                                     <span
                                         className={styles.showMore}
                                         onClick={() => toggleNameExpansion(item.id)}
                                     >
-                                        {expandedNames[item.id] ? 'Thu gọn' : 'Xem thêm'}
-                                    </span>
+                                            {expandedNames[item.id] ? 'Thu gọn' : 'Xem thêm'}
+                                        </span>
                                 )}
                             </td>
                             <td className={styles.priceContainer}>{formatCurrency(item.price)}</td>
@@ -103,10 +105,9 @@ const Checkout = () => {
                     </button>
                 </div>
             </div>
-            <aside className={`${styles.sidebar} ${styles.sidebarRight}`}>
-            </aside>
+            <aside className={`${styles.sidebar} ${styles.sidebarRight}`}></aside>
         </div>
     );
-}
+};
 
 export default Checkout;
