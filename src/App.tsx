@@ -7,10 +7,12 @@ import { ShoppingContextProvider } from "./components/contexts/ShoppingContext";
 import Checkout from "./pages/Checkout/Checkout";
 import Collection from "./pages/Collection/Collection"; // Import trang Collection
 import OrderConfirmation from "./pages/OrderConfirmation/OrderConfirmation"; // Import trang xác nhận đơn hàng
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import { DarkModeProvider } from "./components/layouts/components/darkMode/DarkModeContext";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   return (
