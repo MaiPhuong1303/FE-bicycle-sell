@@ -1,158 +1,10 @@
-////////.root {
-////////  padding: 16px;
-////////}
-////////
-////////
-////////.menu {
-////////  padding: 0;
-////////  margin: 0;
-////////  list-style-type: none;
-////////
-////////  > li {
-////////    margin-top: 16px;
-////////
-////////    &.active {
-////////      color: var(--yellow-color);
-////////    }
-////////
-////////    &:hover {
-////////      cursor: pointer;
-////////      color: var(--yellow-color);
-////////    }
-////////
-////////  }
-////////
-////////}
-////////
-////////.tick {
-////////  width: 1em;
-////////  height: 1em;
-////////  background-color: #007bff; /* Màu nền của ô vuông */
-////////  display: inline-block;
-////////  margin-right: 0.5em; /* Khoảng cách giữa ô vuông và tên danh mục */
-////////  visibility: hidden; /* Ẩn ban đầu, chỉ hiển thị khi active */
-////////}
-////////
-////////.active .tick {
-////////  visibility: visible; /* Hiển thị ô vuông khi active */
-////////}
-//////.root {
-//////  padding: 16px;
-//////}
-//////
-//////.menu {
-//////  padding: 0;
-//////  margin: 0;
-//////  list-style-type: none;
-//////
-//////  > li {
-//////    margin-top: 16px;
-//////    display: flex;
-//////    align-items: center;
-//////
-//////    &:hover {
-//////      cursor: pointer;
-//////      color: var(--yellow-color); /* Màu khi hover */
-//////    }
-//////
-//////    .tick {
-//////      width: 16px;
-//////      height: 16px;
-//////      margin-right: 8px;
-//////      fill: #007bff; /* Màu của dấu tick */
-//////      display: none; /* Ẩn dấu tick ban đầu */
-//////    }
-//////
-//////    &.active {
-//////      color: var(--yellow-color); /* Màu khi active */
-//////      .tick {
-//////        display: inline-block; /* Hiển thị dấu tick khi active */
-//////      }
-//////    }
-//////  }
-//////}
-////.root {
-////  padding: 16px;
-////}
-////
-////.menu {
-////  padding: 0;
-////  margin: 0;
-////  list-style-type: none;
-////
-////  > li {
-////    margin-top: 16px;
-////    display: flex;
-////    align-items: center;
-////    cursor: pointer;
-////    color: #000;
-////    transition: background-color 0.3s ease;
-////
-////    .tick {
-////      width: 16px;
-////      height: 16px;
-////      margin-right: 8px;
-////      fill: #007bff; /* Màu của dấu tick */
-////      display: none; /* Ẩn dấu tick ban đầu */
-////    }
-////
-////    &:hover {
-////      background-color: #f0f0f0; /* Màu nền khi hover */
-////    }
-////
-////    &.active {
-////      color: var(--yellow-color); /* Màu khi active */
-////      .tick {
-////        display: inline-block; /* Hiển thị dấu tick khi active */
-////      }
-////    }
-////  }
-////}
-//.root {
-//  padding: 16px;
-//}
-//
-//.menu {
-//  padding: 0;
-//  margin: 0;
-//  list-style-type: none;
-//
-//  > li {
-//    margin-top: 16px;
-//    display: flex;
-//    align-items: center;
-//    cursor: pointer;
-//    color: #000;
-//    transition: background-color 0.3s ease;
-//
-//    .tick {
-//      width: 16px;
-//      height: 16px;
-//      margin-right: 8px;
-//      fill: #007bff; /* Màu của dấu tick */
-//      display: none; /* Ẩn dấu tick ban đầu */
-//    }
-//
-//    &:hover {
-//      background-color: #f0f0f0; /* Màu nền khi hover */
-//    }
-//
-//    &.active {
-//      color: var(--yellow-color); /* Màu khi active */
-//      .tick {
-//        display: inline-block; /* Hiển thị dấu tick khi active */
-//      }
-//    }
-//  }
-//}
+
 .root {
   padding: 16px;
 
   .title {
     font-weight: 700;
     font-size: 20px;
-    font-family: Cursive;
-    font-style: italic;
   }
 }
 
@@ -205,4 +57,34 @@
       }
     }
   }
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.dark-mode {
+  background: linear-gradient(to bottom right, #4c4f50, #0f3550, #4c4f50);
+  color: #fff;
+}
+
+.light {
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.dark {
+  color: #d2d1cf;
+}
+
+.lightt {
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.darkt {
+  background-color: white;
+  color: #fff;
 }

@@ -2,6 +2,18 @@
 
   //background: linear-gradient(to right, rgba(88, 37, 123, 0), rgb(239, 212, 172));
   //background: linear-gradient(to right, #e0f5f0, #eaccf8, #b2a8fd);
+  /* Định nghĩa kiểu cho chế độ sáng */
 
 
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Định nghĩa kiểu cho chế độ tối */
+.dark-mode {
+  background: linear-gradient(to right, #051018, #2177b4, #051018);
+  color: #fff;
 }
