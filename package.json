@@ -65,6 +65,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-slick": "^0.23.13"
+    "concurrently": "^8.2.2",
+    "file-loader": "^6.2.0",
+    "sneaks-api": "^1.2.3"
   }
 }
