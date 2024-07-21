@@ -5,6 +5,7 @@ export interface Category {
     id: number;
     name: string;
     path: string;
+    
     // Other properties if needed
 }
 
