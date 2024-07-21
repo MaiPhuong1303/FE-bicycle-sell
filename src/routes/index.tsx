@@ -12,8 +12,10 @@ import ProductDetails from "../pages/ProductDetails";
 import SearchResults from "../components/layouts/components/Search/SearchResults";
 import Checkout from "../pages/Checkout/Checkout";
 import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
+
 import Login from "../pages/Login/login";
 import { SignUpPage } from "../pages/Signup";
+
 
 //public routes
 const publicRoutes = [
@@ -31,8 +33,10 @@ const publicRoutes = [
     {path: '/search/:keyword', component: SearchResults},
     {path: '/checkout', component: Checkout},
     {path: '/order-confirmation', component: OrderConfirmation},
+
     {path: '/login', component: Login},
     {path: '/signup', component: SignUpPage},
+
 
 
     // { path: '/account', component: Account },

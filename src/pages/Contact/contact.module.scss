@@ -1,69 +1,91 @@
-
 .container {
     display: flex;
     justify-content: center;
-    margin-top: 70px;
-
+    margin-top: 50px;
 }
 
-.content {
-    width: var(--content-pc-width);
+.sidebar-left,
+.sidebar-right {
+    width: 10%;
+}
+
+.main-content {
+    width: 80%;             // Giảm chiều rộng chính để phù hợp với bố cục tổng thể
     display: flex;
+    justify-content: space-between;
     margin-bottom: 50px;
 }
-.info {
-    width: 40%;
-    padding: 0 15px;
+
+.contact-info,
+.contact-form {
+    width: 48%;             // Giảm một chút chiều rộng để phù hợp với khoảng cách giữa hai phần
+    padding: 10px;
+    margin-bottom: 30px;
 }
+
 .heading {
-    font-size: 2.8rem;
-    margin: 30px 0;
-    text-align: center;
+    font-size: 2.8rem;       // Kích thước chữ lớn hơn
+    margin: 30px 0;          // Khoảng cách trên và dưới
+    text-align: center;      // Căn giữa văn bản
+    white-space: nowrap;     // Ngăn không cho văn bản xuống dòng
+    overflow: hidden;        // Ẩn phần văn bản vượt quá chiều rộng
+    text-overflow: ellipsis; // Thêm dấu ba chấm "..." nếu văn bản quá dài
 }
+
 .contact-list {
+    list-style-type: none;   // Loại bỏ dấu chấm đầu dòng
+    padding: 0;              // Xóa khoảng cách bên trong
+    margin: 0;               // Xóa khoảng cách bên ngoài
+
     li {
         border-radius: 25px;
         padding: 10px;
         border: 2px solid #0a1e3a;
         display: flex;
+        align-items: center; // Căn giữa các phần tử theo chiều dọc
         margin-bottom: 20px;
     }
 }
+
 .icon {
     width: 35px;
     height: 35px;
     border: 1px solid #ddd;
     border-radius: 50%;
-    padding: 0 5px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .description {
     margin-left: 15px;
     font-size: 1.4rem;
     color: #696969;
+
     .title {
         color: #000;
         font-weight: 700;
     }
 }
-//
-.form {
-    width: 60%;
-    padding: 0 15px;
-}
+
 .legend {
     font-size: 1.4rem;
+    text-align: center;   // Căn giữa văn bản
+    margin-bottom: 20px; // Khoảng cách dưới
 }
 
 .form-input {
     border-radius: 25px;
     padding: 10px;
     border: 2px solid #0a1e3a;
-    height: 600px;
     text-align: center;
-    input {
+    display: flex;
+    flex-direction: column; // Căn chỉnh các phần tử theo chiều dọc
+    align-items: center;    // Căn giữa các phần tử theo chiều ngang
+
+    input,
+    textarea {
         font-size: 1.4rem;
         width: 80%;
         outline: none;
@@ -74,41 +96,37 @@
     }
 
     textarea {
-        font-size: 1.4rem;
-        width: 80%;
         height: 100px;
-        outline: none;
-        border: 1px solid #e7e7e7;
-        padding: 10px 20px;
-        margin: 10px 0;
-        color: #5c5c5c;
         resize: none;
     }
 }
+
 .caption {
     color: #9e9e9e;
     font-size: 1.4rem;
     text-align: justify;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin: 0 40px;
+
     a {
         color: #2962ff;
     }
 }
-.wrap-input {
-}
 
 .submit-btn {
     width: 80%;
-    height: 30px;
     margin-top: 20px;
-    margin-left: 60px;
-    text-align: center;
+    display: flex;
+    justify-content: center;  // Căn giữa nút
+    align-items: center;      // Căn giữa nội dung nút
+
     input {
         cursor: pointer;
         background-color: var(--orange-color);
         color: #d7bc92;
         font-size: 1.3rem;
+        border: none;
+        padding: 10px;
+        border-radius: 5px; // Bo tròn góc của nút
 
         &:hover {
             background-color: rgb(10, 30, 58);
@@ -116,11 +134,32 @@
     }
 }
 
-.anounce {
-    background-color: rgb(10, 30, 58);
-    color: rgb(215, 188, 146);
-    border-radius: 4px;
-    padding: 8px;
-    font-size: 1.4rem;
-    margin: 6px 0;
+.thank-you-message {
+    position: fixed;
+    top: 120px;            // Khoảng cách từ trên cùng của màn hình
+    right: 30px;          // Khoảng cách từ cạnh phải của màn hình
+    background-color: #60b265; // Màu nền của thông báo (xanh lá cây)
+    color: white;         // Màu chữ trắng
+    padding: 15px 20px;  // Khoảng cách bên trong hộp thông báo
+    border-radius: 5px;  // Bo tròn các góc của hộp thông báo
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Đổ bóng nhẹ cho hộp thông báo
+    font-size: 1.4rem;   // Kích thước chữ
+    z-index: 1000;       // Đảm bảo thông báo xuất hiện trên các phần tử khác
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; // Hiệu ứng chuyển tiếp cho độ mờ
+
+    &.show {
+        opacity: 1;
+    }
+
+    .tick-icon {
+        font-size: 1.8rem; // Kích thước của biểu tượng tick
+        margin-right: 10px; // Khoảng cách giữa biểu tượng tick và văn bản
+    }
+
+    p {
+        display: inline; // Hiển thị văn bản trên cùng dòng với biểu tượng tick
+    }
 }
+
+

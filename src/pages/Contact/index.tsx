@@ -1,159 +1,170 @@
-import {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import {FaEnvelope, FaLocationArrow, FaPhone} from 'react-icons/fa';
-// import Breadcrumb from '~/components/Breadcrumb';
-// import Button from '~/components/Button';
+import { FaEnvelope, FaLocationArrow, FaPhone, FaCheckCircle } from 'react-icons/fa'; // Import biểu tượng tick
+import emailjs from 'emailjs-com';
 import styles from './contact.module.scss';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { newMessage } from '~/actions/messageActions';
-// import Loader from '~/components/Loader';
-// import { clearErrors } from '~/reducers/messageReducers';
 
 const cx = classNames.bind(styles);
 
-function Contact() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNo, setPhoneNo] = useState('');
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+const Contact: React.FC = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phoneNo: '',
+        title: '',
+        content: ''
+    });
+    const [showThankYouMessage, setShowThankYouMessage] = useState(false);
 
-    // const { loading, success } = useSelector((state) => state.newMessage);
-
-    // const dispatch = useDispatch();
-
-    const handleSubmit = () => {
-        const senderInfo = {name, email, phoneNo};
-        try {
-            // dispatch(newMessage(senderInfo, title, content));
-            clearForm();
-        } catch (error) {
-            // dispatch(clearErrors());
+    useEffect(() => {
+        if (showThankYouMessage) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+    }, [showThankYouMessage]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({ ...prevState, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        emailjs.send('service_b4lnyib', 'template_4kg1vns', formData, 'sBdosjvcp8D6f8XyB')
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                clearForm();
+                setShowThankYouMessage(true);
+                setTimeout(() => {
+                    setShowThankYouMessage(false);
+                }, 3000); // Ẩn thông báo sau 3 giây
+            }, (err) => {
+                console.log('FAILED...', err);
+            });
     };
 
     const clearForm = () => {
-        setName('');
-        setEmail('');
-        setPhoneNo('');
-        setTitle('');
-        setContent('');
+        setFormData({
+            name: '',
+            email: '',
+            phoneNo: '',
+            title: '',
+            content: ''
+        });
     };
 
-    // if (loading) {
-    //     return <Loader />;
-    // } else {
     return (
-        <>
-            {/*<Breadcrumb cases={{ title: 'Liên hệ' }} />*/}
-            <div className={cx('container')}>
-                <div className={cx('location')}></div>
-                <div className={cx('content')}>
-                    <div className={cx('info')}>
-                        <h2 className={cx('heading')}>Thông tin liên hệ</h2>
-                        <ul className={cx('contact-list')}>
-                            <li>
-                                    <span className={cx('icon')}>
-                                        <FaLocationArrow/>
-                                    </span>
-                                <span className={cx('description')}>
-                                        <p className={cx('title')}>Địa chỉ</p>
-                                        <p>Khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
-                                    </span>
-                            </li>
-                            <li>
-                                    <span className={cx('icon')}>
-                                        <FaEnvelope/>
-                                    </span>
-                                <span className={cx('description')}>
-                                        <p className={cx('title')}>Email</p>
-                                        <p>cchanh375@gmail.com</p>
-                                    </span>
-                            </li>
-                            <li>
-<span className={cx('icon')}>
-                                        <FaPhone/>
-                                    </span>
-                                <span className={cx('description')}>
-                                        <p className={cx('title')}>Điện thoại</p>
-                                        <p>0877.287.869</p>
-                                    </span>
-                            </li>
-                            <li>
-                                    <span className={cx('icon')}>
-                                        <FaEnvelope/>
-                                    </span>
-                                <span className={cx('description')}>
-                                        <p className={cx('title')}>Thời gian làm việc</p>
-                                        <p>
-                                            Thứ 2 đến Thứ 6 từ 8h00 đến 18h00 <br/>
-                                            Thứ 7 và Chủ nhật từ 8h00 đến 17h00
-                                        </p>
-                                    </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className={cx('form')}>
-                        <h2 className={cx('heading')}>Gửi thắc mắc cho chúng tôi</h2>
-                        <p className={cx('legend')}>Đừng ngại để lại tin nhắn để Shop hỗ trợ bạn nhanh hơn nhé!</p>
-                        {/*{success ? (*/}
-                        <div className={cx('anounce')}>
+        <div className={cx('container')}>
+            <div className={cx('sidebar-left')}></div>
+            <div className={cx('main-content')}>
+                <div className={cx('contact-info')}>
+                    <h2 className={cx('heading')}>Thông tin liên hệ</h2>
+                    <ul className={cx('contact-list')}>
+                        <li>
+                            <span className={cx('icon')}>
+                                <FaLocationArrow />
+                            </span>
+                            <span className={cx('description')}>
+                                <p className={cx('title')}>Địa chỉ</p>
+                                <p>Khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span className={cx('icon')}>
+                                <FaEnvelope />
+                            </span>
+                            <span className={cx('description')}>
+                                <p className={cx('title')}>Email</p>
+                                <p>21130211@st.hcmuaf.edu.vn</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span className={cx('icon')}>
+                                <FaPhone />
+                            </span>
+                            <span className={cx('description')}>
+                                <p className={cx('title')}>Điện thoại</p>
+                                <p>0877.287.869</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span className={cx('icon')}>
+                                <FaEnvelope />
+                            </span>
+                            <span className={cx('description')}>
+                                <p className={cx('title')}>Thời gian làm việc</p>
+                                <p>
+                                    Thứ 2 đến Thứ 6 từ 8h00 đến 18h00 <br />
+                                    Thứ 7 và Chủ nhật từ 8h00 đến 17h00
+                                </p>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div className={cx('contact-form')}>
+                    <h2 className={cx('heading')}>Gửi thắc mắc tại đây</h2>
+                    {showThankYouMessage && (
+                        <div className={cx('thank-you-message', 'show')}>
+                            <FaCheckCircle className={cx('tick-icon')} /> {/* Thêm biểu tượng tick */}
                             <p>
-                                Cám ơn bạn đã liên hệ, chúng tôi sẽ trả lời trực tiếp thông qua email và số điện
-                                thoại bạn để lại ngay khi có thể
+                                Cảm ơn bạn đã liên hệ đến chúng tôi. Chúng tôi sẽ trả lời bạn sớm nhất có thể.
                             </p>
                         </div>
-                        {/*) : null}*/}
-                        <form action="#" className={cx('form-input')}>
-                            <input
-                                type="text"
-                                placeholder="Tên của bạn"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email của bạn"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                            <input
-                                type="text"
-                                placeholder="Số điện thoại của bạn"
-                                value={phoneNo}
-                                onChange={(e) => setPhoneNo(e.target.value)}
-                                required
-                            />
-                            <input
-                                type="text"
-                                placeholder="Tiêu đề nội dung"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                required
-                            />
-                            <textarea
-                                placeholder="Nội dung"
-                                value={content}
-                                onChange={(e) => setContent(e.target.value)}
-                                required
-                            />
-                            <p className={cx('caption')}>
-                                This site is protected by reCAPTCHA and the Google{' '}
-                                <a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
-                                <a href="https://policies.google.com/terms">&nbsp;Terms of Service&nbsp;</a> apply.
-                            </p>
-                            <div className={cx('submit-btn')} onClick={handleSubmit}>
-                                <input type="submit" value="GỬI CHO CHÚNG TÔI"/>
-                            </div>
-                        </form>
-                    </div>
+                    )}
+                    <form className={cx('form-input')} onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Tên của bạn"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email của bạn"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="phoneNo"
+                            placeholder="Số điện thoại của bạn"
+                            value={formData.phoneNo}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Tiêu đề nội dung"
+                            value={formData.title}
+                            onChange={handleChange}
+                            required
+                        />
+                        <textarea
+                            name="content"
+                            placeholder="Nội dung"
+                            value={formData.content}
+                            onChange={handleChange}
+                            required
+                        />
+                        <p className={cx('caption')}>
+                            This site is protected by reCAPTCHA and the Google{' '}
+                            <a href="https://policies.google.com/privacy">&nbsp;Privacy Policy&nbsp;</a> and{' '}
+                            <a href="https://policies.google.com/terms">&nbsp;Terms of Service&nbsp;</a> apply.
+                        </p>
+                        <div className={cx('submit-btn')}>
+                            <input type="submit" value="GỬI CHO CHÚNG TÔI"/>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </>
+            <div className={cx('sidebar-right')}></div>
+        </div>
     );
-    // }
-}
+};
 
 export default Contact;

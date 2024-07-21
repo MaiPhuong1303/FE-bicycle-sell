@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultLayout from './components/layouts/DefaultLayout';
+
 import {publicRoutes} from './routes';
 import {ShoppingContextProvider} from "./components/contexts/ShoppingContext";
 import Checkout from "./pages/Checkout/Checkout";
@@ -48,6 +49,7 @@ function App() {
               </Routes>
             </div>
           </Router>
+
         </ShoppingContextProvider>
       </ToastProvider>
     </DarkModeProvider>

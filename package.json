@@ -23,6 +23,10 @@
     "bootstrap-sass": "^3.4.3",
     "classnames": "^2.5.1",
     "css-loader": "^7.1.2",
+
+    "emailjs-com": "^3.2.0",
+
+
     "js-cookie": "^3.0.5",
     "json-server": "github:notPlancha/json-server#v0",
     "process": "^0.11.10",
