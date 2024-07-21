@@ -7,6 +7,9 @@ export interface ProductParams {
     _end?: number;
     _totalItems?: number;
     name_like?: string;
+    salePrice_gte?: number;
+    salePrice_lte?: number;
+
 }
 
 const productApi = {
