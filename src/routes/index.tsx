@@ -9,10 +9,11 @@ import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 import Instruct from '../pages/Instruct';
 import ProductDetails from "../pages/ProductDetails";
-import Search from "../components/layouts/components/Search/Search";
 import SearchResults from "../components/layouts/components/Search/SearchResults";
 import Checkout from "../pages/Checkout/Checkout";
 import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
+import Login from "../pages/Login/login";
+import { SignUpPage } from "../pages/Signup";
 
 //public routes
 const publicRoutes = [
@@ -30,6 +31,9 @@ const publicRoutes = [
     {path: '/search/:keyword', component: SearchResults},
     {path: '/checkout', component: Checkout},
     {path: '/order-confirmation', component: OrderConfirmation},
+    {path: '/login', component: Login},
+    {path: '/signup', component: SignUpPage},
+
 
     // { path: '/account', component: Account },
     // { path: '/myorders', component: Account },
