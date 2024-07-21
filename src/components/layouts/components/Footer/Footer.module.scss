@@ -4,7 +4,7 @@
 .footer {
   background-color: var(--background-color);
   color: var(--yellow-color);
-  padding: 40px 0;
+  padding: 30px 0;
   text-align: center;
 
   .footer-container {
@@ -13,6 +13,7 @@
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
+
 
     .footer-column {
       flex: 1;
@@ -25,13 +26,14 @@
 
       .p, ul {
         margin: 0;
-        padding: 0;
+        padding: 15px;
         list-style: none;
       }
 
       .ul {
         .li {
           margin-bottom: 10px;
+          padding: 5px;
 
           .a {
             color: white;
@@ -45,7 +47,9 @@
       }
     }
   }
-
+  .h4{
+    font-family: 'Fira Sans';
+  }
   .footer-bottom {
     margin-top: 20px;
     border-top: 1px solid #444;

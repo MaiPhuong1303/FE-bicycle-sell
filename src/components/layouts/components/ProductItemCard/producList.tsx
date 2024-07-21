@@ -122,10 +122,12 @@ function ProductList({categoryName}: { categoryName?: string }) {
             <Container>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={3} className={cx('left')}>
+
                         {/*<Paper elevation={3}*/}
                         <div className={cx('left-item', {'dark-mode': isDarkMode, 'light-mode': !isDarkMode})}></div>
                         <ProductFilters filters={filters} onChange={handleFiltersChange}/>
                         {/*</Paper>*/}
+
                     </Grid>
                     <Grid item xs={12} md={9} className={cx('right')}>
                         <Paper elevation={3}>
