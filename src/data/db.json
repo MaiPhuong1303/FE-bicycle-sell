@@ -2,23 +2,29 @@
   "categories": [
     {
       "id": 1,
-      "name": "Xe đạp thể thao"
+      "name": "Xe đạp thể thao",
+      "thumbnail":"/card-thumbnail-sport-bicycle.webp"
     },
     {
       "id": 2,
-      "name": "Xe đạp thời trang, thông dụng"
+      "name": "Xe đạp thời trang, thông dụng",
+      "video":"/cận-cảnh-chân-nữ-đạp-xe-trong-công-viên-buổi-sáng-hoặc-đại-lộ-bên-cạnh-một-phụ-nữ-trẻ-đi-xe.mp4",
+      "thumbnail":"/card-thumbnail-fashion-bicycle.webp"
     },
     {
       "id": 3,
-      "name": "Xe đạp trẻ em"
+      "name": "Xe đạp trẻ em",
+      "thumbnail":"/card-thumbnail-children-bicycle.webp"
     },
     {
       "id": 4,
-      "name": "Xe đạp điện"
+      "name": "Xe đạp điện",
+      "thumbnail":"/card-thumbnail-electric-bicycle.jpeg"
     },
     {
       "id": 5,
-      "name": "Phụ kiện xe đạp"
+      "name": "Phụ kiện xe đạp",
+      "thumbnail":"/card-thumbnail-accessories-bicycle.jpeg"
     }
   ],
   "products": [
