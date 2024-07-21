@@ -1,32 +1,87 @@
-/* style.module.scss */
-.slider {
-    .slick-slide {
-      text-align: center;
-      color: #fff;
-      background: #364d79;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+// /* style.module.scss */
+// .slider {
+//     .slick-slide {
+//       text-align: center;
+//       color: #fff;
+//       background: #364d79;
+//       overflow: hidden;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//     }
   
-    .slick-prev, .slick-next {
-      z-index: 1;
-      color: #fff;
-    }
+//     .slick-prev, .slick-next {
+//       z-index: 1;
+//       color: #fff;
+//     }
   
-    .banner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      background-color: #ff5f6d;
+//     .banner {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       font-size: 24px;
+//       background-color: #ff5f6d;
 
-      .image {
-        width: 100vw;
-        height:100vh;
-        object-fit: cover;
-      }
-    }
-  }
+//       .image {
+//         width: 100vw;
+//         height:100vh;
+//         object-fit: cover;
+//       }
+//     }
+//   }
   
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(calc(-100% * var(--current-slide)));
+}
+
+.slide {
+  min-width: 100%;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+}

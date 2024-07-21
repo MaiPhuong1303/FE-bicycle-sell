@@ -1,8 +1,8 @@
-import sportBicycle from "../../data/sportBicycle";
-import fashionBicycle from "../../data/fashionBicycle";
-import childrentBicycle from "../../data/childrentBicycle";
-import accessoriesBicycle from "../../data/accessoriesBicycle";
-import electricBicycle from "../../data/electricBicycle";
+import sportBicycle from "../../data/db.json";
+import fashionBicycle from "../../data/db.json";
+import childrentBicycle from "../../data/db.json";
+import accessoriesBicycle from "../../data/db.json";
+import electricBicycle from "../../data/db.json";
 
 import sportBanner from "../../images/homePage/category-banner-1.jpeg";
 

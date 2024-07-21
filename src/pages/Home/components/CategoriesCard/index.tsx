@@ -2,17 +2,18 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import style from './style.module.scss';
 import { productRenderData } from '../../constants';
+import { Category } from '../..';
 
 const cx = classNames.bind(style);
 
-export function CategoriesCard() {
+export function CategoriesCard({categories}:{categories:Category[]}) {
   return (
     <div className={cx('container')}>
-      {productRenderData.map((category) => (
-        <div className={cx('card')} key={category.title}>
-          <img src={category.cardThumbnail} alt={category.title} className={cx('img')} />
+      {categories.map((category) => (
+        <div className={cx('card')} key={category.id}>
+          <img src={category.thumbnail} alt={category.name} className={cx('img')} />
           <div className={cx('overlay')}>
-            <div className={cx('title')}>{category.title}</div>
+            <div className={cx('title')}>{category.name}</div>
           </div>
         </div>
       ))}
