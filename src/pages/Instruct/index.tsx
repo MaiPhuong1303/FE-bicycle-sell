@@ -1,7 +1,7 @@
 import {readFile} from "node:fs";
 
 import classNames from 'classnames/bind';
-import styles from './instruct.module.scss';
+import styles from './Instruct.module.scss';
 import {Link} from 'react-router-dom';
 import aboutImages from '../../images/aboutImages';
 import SideBox from '../../components/layouts/components/SideBox';
