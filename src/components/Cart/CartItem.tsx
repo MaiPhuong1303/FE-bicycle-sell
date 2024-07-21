@@ -1,5 +1,4 @@
 import React from 'react';
-import { useShoppingContext } from "../contexts/ShoppingContext";
 import { formatCurrency } from '../helpers/common';
 import styles from './CartItem.module.scss';
 import classNames from 'classnames/bind';
@@ -56,7 +55,9 @@ const CartItem: React.FC<CartItemProps> = ({ id, name, price, qty, thumbnail, in
                 <span className={cx('item-price')}>{formatCurrency(qty * price)}</span>
             </td>
             <td className={cx('cart-item-remove')}>
-                <button className="btn btn-sm btn-danger btn-remove" onClick={handleRemoveCartItem}><i className="fas fa-trash-alt"></i></button>
+                <button className="btn btn-sm btn-danger btn-remove" onClick={handleRemoveCartItem}>
+                    <i className="fa-solid fa-trash-alt"></i>
+                </button>
             </td>
         </tr>
     );

@@ -1,0 +1,81 @@
+.orderConfirmation {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+
+  .messageContainer {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #e9f7ef;
+    border: 1px solid #d4edda;
+    border-radius: 5px;
+    color: #155724;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .orderDetails {
+    margin-top: 20px;
+
+    .table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #dee2e6;
+      }
+
+      th {
+        background-color: #f8f9fa;
+      }
+
+      .imgContainer {
+        width: 50px;
+        height: 50px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .itemName {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .priceContainer,
+      .quantityContainer,
+      .totalPriceContainer {
+        text-align: right;
+      }
+
+      .totalLabel {
+        font-weight: bold;
+      }
+
+      .totalAmount {
+        font-weight: bold;
+        color: #d9534f;
+      }
+    }
+
+    .backButton {
+      margin-top: 20px;
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  }
+}
