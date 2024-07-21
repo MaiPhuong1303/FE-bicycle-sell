@@ -74,6 +74,8 @@ function Home() {
           ))}
           <CategoriesCard categories={categories} />
         </div>
+      </div>
+    </div>
   );
 }
 export default Home;
