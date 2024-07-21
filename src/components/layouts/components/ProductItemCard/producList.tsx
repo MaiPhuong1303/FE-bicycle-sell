@@ -11,6 +11,8 @@ import {Container} from '@mui/system';
 import {Grid, Pagination, Paper} from '@mui/material';
 import ProductFilters from './ProductFilters';
 
+
+
 import {useShoppingContext} from "../../../contexts/ShoppingContext";
 import ProductItemCard from "./ProductItemCard";
 import {useDarkMode} from "../darkMode/DarkModeContext";
