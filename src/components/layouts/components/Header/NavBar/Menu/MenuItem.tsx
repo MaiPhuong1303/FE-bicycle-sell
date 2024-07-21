@@ -5,8 +5,10 @@ import styles from './Menu.module.scss';
 import PropTypes from 'prop-types';
 import Submenu, {SubmenuItem} from './Submenu';
 import {FaChevronRight} from 'react-icons/fa';
+import {useDarkMode} from "../../../darkMode/DarkModeContext";
 
 const cx = classNames.bind(styles);
+
 
 interface MenuItemProps {
     title: string;
@@ -23,14 +25,14 @@ const MenuItem: React.FC<MenuItemProps> = ({title, to, icon, hasSubmenu, onCateg
             onCategoryChange(null); // Đặt lại selectedCategoryId về null khi click vào menu item
         }
     };
-
+    const {isDarkMode} = useDarkMode();
     return hasSubmenu ? (
         <>
             <NavLink className={(nav) => cx('menu-item', {active: nav.isActive}, 'has-submenu')} to={to}
                      onClick={handleItemClick}>
                 <span className={cx('title')}>{title}</span>
                 {icon && <span className={cx('icon')}>{icon}</span>}
-                <div className={cx('submenu-wrapper')}>
+                <div className={cx('submenu-wrapper', {'dark-mode': isDarkMode, 'light-mode': !isDarkMode})}>
                     <Submenu>
                         <SubmenuItem title="Xe đạp thể thao" to="/collection/xe-dap-the-thao"></SubmenuItem>
                         <SubmenuItem title="Xe đạp thời trang, thông dụng"
