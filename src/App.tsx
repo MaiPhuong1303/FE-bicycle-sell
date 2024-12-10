@@ -4,6 +4,7 @@ import DefaultLayout from './components/layouts/DefaultLayout';
 
 import {publicRoutes} from './routes';
 import {ShoppingContextProvider} from "./components/contexts/ShoppingContext";
+
 import Checkout from "./pages/Checkout/Checkout";
 import Collection from "./pages/Collection/Collection"; // Import trang Collection
 import OrderConfirmation from "./pages/OrderConfirmation/OrderConfirmation"; // Import trang xác nhận đơn hàng
@@ -14,8 +15,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ToastProvider } from "./providers/ToastProvider";
 
+import {DarkModeProvider} from './components/layouts/components/darkMode/DarkModeContext';
 
 function App() {
+
   return (
     <DarkModeProvider>
       <ToastProvider>
@@ -54,6 +57,7 @@ function App() {
       </ToastProvider>
     </DarkModeProvider>
   );
+
 }
 
 export default App;

@@ -87,4 +87,46 @@
 .darkt {
   background-color: white;
   color: #fff;
+
+}
+
+.item {
+  width: 100%; // điều chỉnh chiều rộng của TextField\
+  margin-top: 40px;
+
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; // khoảng cách giữa các phần tử
+  margin-top: 20px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.rangeButton {
+  width: 100%; // Chiều rộng của nút
+  margin-top: 20px;
+}
+
+.predefinedRanges > .rangeWrapper {
+  margin-bottom: 10px; // Khoảng cách giữa các nút
+}
+
+.predefinedRanges {
+  margin-top: 20px;
+
 }
